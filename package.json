@@ -1,0 +1,22 @@
+{
+  "name": "Space-grapple",
+  "version": "0.1.0",
+  "description": "online multiplayer game",
+  "keywords": [
+    "space",
+    "grapple",
+    "game",
+    "online",
+    "multiplayer",
+    "server"
+  ],
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.4.5"
+  },
+  "bugs": {
+    "url": "https://github.com/thepiercingarrow2/grapple/issues",
+    "email": "thepiercingarrow@protonmail.com"
+  },
+  "repository": "github:thepiercingarrow2/grapple"
+}
