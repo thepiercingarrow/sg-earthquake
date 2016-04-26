@@ -18,8 +18,8 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-  </body>
-  <script>
+<script src="/socket.io/socket.io.js"></script>
+ <script>
   var socket = io();
   $('form').submit(function(){
     socket.emit('new room message', $('#m').val());
@@ -30,4 +30,6 @@
     $('#messages').append($('<li>').text(msg));
   });
 </script>
+  </body>
+ 
 </html>
