@@ -8,6 +8,7 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('new room message', function(msg){
+    console.log(msg);
     io.emit('new room message', msg);
   });
   socket.on('new whisper', function(msg){
