@@ -21,7 +21,7 @@
 <script src="/socket.io/socket.io.js"></script>
  <script>
   var socket = io();
-  function(){
+  function submit(){
     socket.emit('new room message', document.getElementById("m").value);
     return false;
   };
