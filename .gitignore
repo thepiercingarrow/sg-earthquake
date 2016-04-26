@@ -1,0 +1,10 @@
+# OS X
+.DS_Store
+
+# Emacs recovery files
+*~
+[#]*[#]
+.\#*
+
+# Node modules
+/node_modules
