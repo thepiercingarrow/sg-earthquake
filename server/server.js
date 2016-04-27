@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var https = require('https').Server(app);
+var io = require('socket.io')(https);
 
 var path = require('path');
 
@@ -18,6 +18,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(process.env.PORT, function(){
+https.listen(process.env.PORT, function(){
   console.log('listening on port ' + process.env.PORT);
 });
