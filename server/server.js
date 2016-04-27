@@ -3,7 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.use(express.static('../client'));
+app.use(express.static('client'));
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
