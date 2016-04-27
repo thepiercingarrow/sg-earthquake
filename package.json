@@ -15,7 +15,7 @@
     "socket.io": "^1.4.5"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/server.js"
   },
   "bugs": {
     "url": "https://github.com/thepiercingarrow2/grapple/issues",
