@@ -17,6 +17,7 @@
   "scripts": {
     "start": "node server/server.js"
   },
+  "main": "server/server.js",
   "bugs": {
     "url": "https://github.com/thepiercingarrow2/grapple/issues",
     "email": "thepiercingarrow@protonmail.com"
