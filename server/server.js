@@ -3,6 +3,10 @@ var app = express();
 var https = require('https').Server(app);
 var io = require('socket.io')(https);
 
+var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 var path = require('path');
 
 app.get('/', function (req, res) {
@@ -18,6 +22,5 @@ io.on('connection', function(socket){
   });
 });
 
-https.listen(process.env.PORT, function(){
-  console.log('listening on port ' + process.env.PORT);
-});
+https.createServer(credentials, app).listen(process.env.PORT);
+console.log('listening on port ' + process.env.PORT);
