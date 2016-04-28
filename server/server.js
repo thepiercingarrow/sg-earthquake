@@ -15,5 +15,5 @@ io.on('connection', function(socket){
   });
 });
 
-http.createServer(credentials, app).listen(process.env.PORT);
+http.createServer(app).listen(process.env.PORT || 8000);
 console.log('listening on port ' + process.env.PORT);
