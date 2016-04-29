@@ -22,15 +22,10 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
-      var myip;
-      socket.on('client-ip', function(ip){
-        myip=ip;
-      });
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
         var msg = $("#m").val();
         $('#m').val('');
-        $('#messages').append($('<li>').text(myip + ': ' + msg));
         return false;
       });
       socket.on('chat message', function(msg){
