@@ -8,6 +8,7 @@ var path = require('path');
 app.use(express.static('client'));
 
 io.on('connection', function(socket){
+  socket.emit('client-ip', socket.request.connection.remoteAddress)
   socket.on('chat message', function(msg){
     console.log(socket.request.connection.remoteAddress + ': ' + msg);
     io.broadcast.emit('chat message', socket.request.connection.remoteAddress + ': ' + msg);
