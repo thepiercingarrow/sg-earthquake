@@ -9,9 +9,8 @@ app.use(express.static('client'));
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    var address = socket.handshake.address;
-    console.log(address.address + ': ' + msg);
-    io.emit('chat message', address.address + ': ' + msg);
+    console.log(socket.request.connection.remoteAddress + ': ' + msg);
+    io.broadcast.emit('chat message', socket.request.connection.remoteAddress + ': ' + msg);
   });
 });
 
