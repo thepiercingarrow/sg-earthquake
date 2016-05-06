@@ -2,21 +2,15 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <style rel='stylesheet.css'></style>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
   <body>
-    <div class="chatbar" id="chatbar">
-            <ul id="messages" class="messages"></ul>
-            <input id="chatInput" type="text" class="chat-input" placeholder="Chat here..." maxlength="35" />
-        </div>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="chat" id="chatbar">
+      <ul id="messages" class="messages"></ul>
+      <input id="chatbar" type="text" class="chatbar" placeholder="Chat here..." maxlength="35" />
+    </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      
-    </script>
+    <script src='app.js'></script>
   </body>
 </html>
