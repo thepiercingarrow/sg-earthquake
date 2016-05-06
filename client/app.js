@@ -3,7 +3,7 @@ var name = prompt("Enter a nickname.");
 
 $('.chatbar').bind("enterKey",function(e){
   socket.emit('chat message', name + ": " + $('#.chatbar').val());
-  var msg = $(''.chatbar').val();
+  var msg = $('.chatbar').val();
   $('.chatbar').val('');
   return false;
 });
