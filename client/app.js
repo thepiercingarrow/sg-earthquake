@@ -18,13 +18,16 @@ socket.on('chat message', function(msg){
 });
 
 var TAU = 2 * Math.PI;
+var W = window.innerWidth;
+var H = window.innerHeight;
 
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
-context.drawCircle = function(x, y, r) {
+var c = document.getElementById("canvas");
+c.width = W; c.height = H;
+var ct = canvas.getContext("2d");
+ct.drawCircle = function(x, y, r) {
   this.beginPath();
   this.arc(x,y,r,0,TAU);
   this.stroke();
 };
 
-context.drawCircle(200, 200, 100);
+ct.drawCircle(W/2, H/2, W/10);
