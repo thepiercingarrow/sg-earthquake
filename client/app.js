@@ -16,3 +16,10 @@ $('.chatbar').keyup(function(e){
 socket.on('chat message', function(msg){
   $('#messages').append($('<li>').text(msg));
 });
+
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+context.drawCircle = function(x, y, r) {
+  this.beginPath();
+  this.arc(95,50,40,0,2*Math.PI);
+  this.stroke();
