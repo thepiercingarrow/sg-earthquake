@@ -17,9 +17,14 @@ socket.on('chat message', function(msg){
   $('#messages').append($('<li>').text(msg));
 });
 
+var TAU = 2 * Math.PI;
+
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 context.drawCircle = function(x, y, r) {
   this.beginPath();
-  this.arc(95,50,40,0,2*Math.PI);
+  this.arc(x,y,r,0,TAU);
   this.stroke();
+};
+
+context.drawCircle(200, 200, 100);
