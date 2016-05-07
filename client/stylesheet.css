@@ -1,5 +1,12 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.floating {
+    z-index: 1;
+}
 
 .chatbox {
     position: absolute;
