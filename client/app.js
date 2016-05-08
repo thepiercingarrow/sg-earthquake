@@ -3,10 +3,11 @@ function DIST(x1, y1, x2, y2){
   return Math.sqrt(dx*dx + dy*dy);
 }
 
-var p;
-
 var socket = io();
 var name = prompt("Enter a nickname.");
+
+var p = {
+  
 
 $(canvas).mousedown(function(e){
   scale = 1/DIST(p[name].x, p[name].y, e.stageX, e.stageY);
