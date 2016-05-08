@@ -3,6 +3,11 @@ var p;
 var socket = io();
 var name = prompt("Enter a nickname.");
 
+$(canvas).mousedown(function(e){
+  scale = e.mouseX + e.mouseY;
+  socket.emit('player-update', {name: name, x: p[name].x - scale * e.mouseX, y: p[name].y - scale * e.mouseY});
+});
+
 $('.chatbar').bind("enterKey",function(e){
   socket.emit('message', name + ": " + $('.chatbar').val());
   var msg = $('.chatbar').val();
