@@ -1,3 +1,5 @@
+var p;
+
 var socket = io();
 var name = prompt("Enter a nickname.");
 
@@ -17,6 +19,10 @@ socket.on('message', function(msg){
   $('#messages').append($('<li style="color:' + msg.color + '">').text(msg.text));
 });
 
+socket.on('players', function(players){
+  p = players;
+}
+//===================================================================================
 var TAU = 2 * Math.PI;
 var W = window.innerWidth;
 var H = window.innerHeight;
@@ -30,6 +36,21 @@ ct.drawCircle = function(x,y,r){
   this.arc(x,y,r,0,TAU);
 };
 
-ct.drawCircle(W/2, H/2, W/10);
-ct.drawCircle(W*4/5, H*2/3, W/15);
-ct.stroke();
+function update() {
+    //TODO: client-side predicting
+}
+
+function draw(players) {
+  for (var p in players) {
+    ct.drawCircle(p.x, p.y, W * p.size);
+  }
+  ct.stroke();
+}
+
+function main() {
+    update();
+    draw(p);
+    requestAnimationFrame(main);
+}
+
+requestAnimationFrame(main);
