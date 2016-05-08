@@ -24,8 +24,9 @@ var H = window.innerHeight;
 var c = document.getElementById("canvas");
 c.width = W; c.height = H;
 var ct = canvas.getContext("2d");
+ct.beginPath();
 ct.drawCircle = function(x,y,r){
-  context.moveTo(x+r,y);
+  this.moveTo(x+r,y);
   this.arc(x,y,r,0,TAU);
 };
 
