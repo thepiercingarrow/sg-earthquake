@@ -13,8 +13,8 @@ $('.chatbar').keyup(function(e){
     $(this).trigger("enterKey");
 });
 
-socket.on('chat message', function(msg){
-  $('#messages').append($('<li>').text(msg));
+socket.on('message', function(msg){
+  $('#messages').append($('<li style="color:' + msg.color + '">').text(msg.text));
 });
 
 var TAU = 2 * Math.PI;
