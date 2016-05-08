@@ -31,5 +31,5 @@ ct.drawCircle = function(x,y,r){
 };
 
 ct.drawCircle(W/2, H/2, W/10);
-ct.drawCircle(W*4/5, H*2/3);
+ct.drawCircle(W*4/5, H*2/3, W/15);
 ct.stroke();
