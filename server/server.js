@@ -8,9 +8,8 @@ var path = require('path');
 app.use(express.static('client'));
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log(msg);
-    io.emit('chat message', msg);
+  socket.on('message', function(text){
+    io.emit('message', {color: "blue", text: text});
   });
 });
 
