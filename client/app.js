@@ -1,10 +1,15 @@
+function DIST(x1, y1, x2, y2){
+  var dx = x1 - x2, dy = y1 - y2;
+  return Math.sqrt(dx*dx + dy*dy);
+}
+
 var p;
 
 var socket = io();
 var name = prompt("Enter a nickname.");
 
 $(canvas).mousedown(function(e){
-  scale = e.mouseX + e.mouseY;
+  scale = 1/DIST(x, y, e.mouseX, e.mouseY);
   socket.emit('player-update', {name: name, x: p[name].x - scale * e.mouseX, y: p[name].y - scale * e.mouseY});
 });
 
@@ -28,9 +33,9 @@ socket.on('players', function(players){
   p = players;
 }
 //===================================================================================
-var TAU = 2 * Math.PI;
-var W = window.innerWidth;
-var H = window.innerHeight;
+var TAU = 2 * Math.PI,
+    W = window.innerWidth,
+    H = window.innerHeight;
 
 var c = document.getElementById("canvas");
 c.width = W; c.height = H;
