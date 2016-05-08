@@ -9,7 +9,7 @@ var socket = io();
 var name = prompt("Enter a nickname.");
 
 $(canvas).mousedown(function(e){
-  scale = 1/DIST(x, y, e.mouseX, e.mouseY);
+  scale = 1/DIST(x, y, e.stageX, e.stageY);
   socket.emit('player-update', {name: name, x: p[name].x - scale * e.mouseX, y: p[name].y - scale * e.mouseY});
 });
 
