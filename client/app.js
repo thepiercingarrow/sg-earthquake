@@ -9,7 +9,8 @@ var name = prompt("Enter a nickname.");
 var p = {};
 p[name] = {name: name,
             x: 50,
-            y: 50
+            y: 50,
+            size: 20
           };
 
 $(canvas).mousedown(function(e){
@@ -56,7 +57,7 @@ function update() {
 
 function draw(players) {
     for (var p in players) {
-	ct.drawCircle(p.x, p.y, W * p.size);
+	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
 	console.log("drew circle: " + p);
     }
     ct.stroke();
