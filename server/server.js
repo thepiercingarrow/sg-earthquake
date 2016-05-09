@@ -10,13 +10,13 @@ var players = {};
 app.use(express.static('client'));
 
 io.on('connection', function(socket){
-  socket.on('message', function(text){
-    io.emit('message', {color: "blue", text: text});
-  });
-  socket.on('player-update', function(p){
-    players[p.name] = p;
-    io.emit('players', players);
-  });
+    socket.on('message', function(text){
+	io.emit('message', {color: "blue", text: text});
+    });
+    socket.on('player-update', function(p){
+	players[p.name] = p;
+	io.emit('players', players);
+    });
 });
 
 http.listen(process.env.PORT || 8000);
