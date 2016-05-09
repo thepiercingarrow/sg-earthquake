@@ -16,6 +16,8 @@ p[name] = {name: name,
 $(canvas).mousedown(function(e){
     scale = 1/DIST(p[name].x, p[name].y, e.stageX, e.stageY);
     socket.emit('player-update', {name: name, x: p[name].x - scale * e.stageX, y: p[name].y - scale * e.stageY});
+    console.log(scale);
+    console.log({name: name, x: p[name].x - scale * e.stageX, y: p[name].y - scale * e.stageY});
 });
 
 $('.chatbar').bind("enterKey",function(e){
@@ -58,7 +60,6 @@ function update() {
 function draw(players) {
     for (var p in players) {
 	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
-	console.log("drew circle: " + players[p]);
     }
     ct.stroke();
 }
