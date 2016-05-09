@@ -6,13 +6,11 @@ function DIST(x1, y1, x2, y2){
 var socket = io();
 var name = prompt("Enter a nickname.");
 
-var p = {
-    name: {name: name,
-        x: 50,
-        y: 50
-    }
-};
-
+var p = {};
+p[name] = {name: name,
+            x: 50,
+            y: 50
+          };
 
 $(canvas).mousedown(function(e){
     scale = 1/DIST(p[name].x, p[name].y, e.stageX, e.stageY);
