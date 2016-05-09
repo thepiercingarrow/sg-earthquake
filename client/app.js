@@ -7,9 +7,10 @@ var socket = io();
 var name = prompt("Enter a nickname.");
 
 var p = {
-    name: name,
-    x: 50,
-    y: 50
+    name: {name: name,
+        x: 50,
+        y: 50
+    }
 };
 
 
