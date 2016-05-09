@@ -20,7 +20,7 @@ io.on('connection', function(socket){
 	io.emit('players', players);
     	console.log("player updated: " + players[name].name);
     });
-    socket.on('disconnect, function(p){
+    socket.on('disconnect', function(p){
     	console.log("player disconnected: " + players[name].name);
 	delete players[name];
     })
