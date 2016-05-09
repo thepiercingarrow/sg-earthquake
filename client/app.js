@@ -58,7 +58,7 @@ function update() {
 function draw(players) {
     for (var p in players) {
 	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
-	console.log("drew circle: " + p);
+	console.log("drew circle: " + players[p]);
     }
     ct.stroke();
 }
