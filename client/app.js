@@ -10,7 +10,7 @@ var p = {};
 p[name] = {name: name,
             x: 50,
             y: 50,
-            size: 20
+            size: 1/10
           };
 
 $(canvas).mousedown(function(e){
