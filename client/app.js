@@ -14,10 +14,10 @@ p[name] = {name: name,
           };
 
 $(canvas).mousedown(function(e){
-    scale = 1/DIST(p[name].x, p[name].y, e.stageX, e.stageY);
-    socket.emit('player-update', {name: name, x: p[name].x - scale * e.stageX, y: p[name].y - scale * e.stageY});
+    scale = 1/DIST(p[name].x, p[name].y, e.clientX, e.clientY);
+    socket.emit('player-update', {name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
     console.log(scale);
-    console.log({name: name, x: p[name].x - scale * e.stageX, y: p[name].y - scale * e.stageY});
+    console.log({name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
 });
 
 $('.chatbar').bind("enterKey",function(e){
