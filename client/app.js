@@ -8,15 +8,14 @@ var name = prompt("Enter a nickname.");
 
 var p = {};
 p[name] = {name: name,
-            x: 50,
-            y: 50,
-            size: 1/10
+            x: W/2,
+            y: H/2,
+            size: 1/20
           };
 
 $(canvas).mousedown(function(e){
-    scale = 1/DIST(p[name].x, p[name].y, e.clientX, e.clientY);
+    scale = 5/DIST(p[name].x, p[name].y, e.clientX, e.clientY);
     socket.emit('player-update', {name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
-    console.log(scale);
     console.log({name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
 });
 
@@ -47,7 +46,6 @@ var TAU = 2 * Math.PI,
 var c = document.getElementById("canvas");
 c.width = W; c.height = H;
 var ct = canvas.getContext("2d");
-ct.beginPath();
 ct.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
@@ -58,6 +56,7 @@ function update() {
 }
 
 function draw(players) {
+    ct.beginPath();
     for (var p in players) {
 	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
     }
