@@ -41,8 +41,8 @@ c.width = W; c.height = H;
 
 
 
-var p = {};
-p[name] = {name: name,
+var players = {};
+player[name] = {name: name,
             x: W/2,
             y: H/2,
             size: 1/20
@@ -57,7 +57,7 @@ function update() {
     //TODO: client-side predicting
 }
 
-function draw(players) {
+function draw() {
     ct.beginPath();
     for (var p in players) {
 	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
@@ -67,7 +67,7 @@ function draw(players) {
 
 function main() {
     update();
-    draw(p);
+    draw();
     requestAnimationFrame(main);
 }
 
