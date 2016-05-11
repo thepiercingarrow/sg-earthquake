@@ -2,9 +2,8 @@ var socket = io();
 var name = prompt("Enter a nickname.");
 
 $(canvas).mousedown(function(e){
-    scale = 5/DIST(p[name].x, p[name].y, e.clientX, e.clientY);
-    socket.emit('player-update', {name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
-    console.log({name: name, x: p[name].x - scale * e.clientX, y: p[name].y - scale * e.clientY});
+    socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
+    console.log({name: name, x: e.clientX, y: e.clientY});
 });
 
 $('.chatbar').bind("enterKey",function(e){
@@ -38,9 +37,6 @@ function DIST(x1, y1, x2, y2){
 var c = document.getElementById("canvas");
 c.width = W; c.height = H;
 
-
-
-
 var players = {};
 player[name] = {name: name,
             x: W/2,
@@ -58,11 +54,13 @@ function update() {
 }
 
 function draw() {
+    ct.clearRect(0, 0, W, H);
     ct.beginPath();
     for (var p in players) {
 	ct.drawCircle(players[p].x, players[p].y, W * players[p].size);
     }
     ct.stroke();
+    ct.closePath();
 }
 
 function main() {
