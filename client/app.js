@@ -47,7 +47,7 @@ p[name] = {name: name,
             y: H/2,
             size: 1/20
           };
-var ct = canvas.getContext("2d");
+var ct = c.getContext("2d");
 ct.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
