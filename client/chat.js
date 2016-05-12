@@ -14,5 +14,8 @@ $('.chatbar').keyup(function(e){
 });
 
 socket.on('message', function(msg){
-    $('#messages').append($('<li style="color:' + msg.color + '">').text(msg.text));
+    
 });
+
+
+$('#messages').append($('<li style="color:' + msg.color + '">').text(msg.text));
