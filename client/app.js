@@ -1,11 +1,6 @@
 var socket = io();
 var name = prompt("Enter a nickname.");
 
-$(canvas).mousedown(function(e){
-    socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
-    console.log({name: name, x: e.clientX, y: e.clientY});
-});
-
 $('.chatbar').bind("enterKey",function(e){
     socket.emit('message', name + ": " + $('.chatbar').val());
     var msg = $('.chatbar').val();
@@ -35,6 +30,7 @@ function DIST(x1, y1, x2, y2){
 }
 
 var c = document.getElementById("canvas");
+
 c.width = W; c.height = H;
 
 var players = {};
@@ -49,8 +45,9 @@ ct.drawCircle = function(x,y,r){
     this.arc(x,y,r,0,TAU);
 };
 
-function update() {
-    //TODO: client-side predicting
+function update(e) {
+    socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
+    console.log({name: name, x: e.clientX, y: e.clientY});
 }
 
 function draw() {
