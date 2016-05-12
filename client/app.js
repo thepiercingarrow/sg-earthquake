@@ -17,8 +17,8 @@ socket.on('message', function(msg){
     $('#messages').append($('<li style="color:' + msg.color + '">').text(msg.text));
 });
 
-socket.on('players', function(players){
-    p = players;
+socket.on('players', function(p){
+    players = p;
 });
 //===================================================================================
 var TAU = 2 * Math.PI,
