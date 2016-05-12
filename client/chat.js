@@ -21,7 +21,7 @@ socket.on('message', function(msg){
 
 function appendmessage(msg, type, player) {
     if (messages.childNodes.length > 10) {
-        messages.removeChild(chatList.childNodes[0]);
+        messages.removeChild(messages.childNodes[0]);
     }
     var newmsg = document.createElement('li');
     newmsg.className = type;
