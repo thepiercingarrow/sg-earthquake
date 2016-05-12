@@ -24,10 +24,10 @@ function appendmessage(msg, type, player) {
         messages.removeChild(chatList.childNodes[0]);
     }
     var newmsg = document.createElement('li');
-    if (type == "player") {
-        newmsg.innerHTML = "<i>" + player + "</i>" + msg;
-    }
     newmsg.className = type;
-    newmsg.innerHTML = msg;
+    if (type == "player")
+        newmsg.innerHTML = "<b>" + player + "</b>" + msg;
+    else
+        newmsg.innerHTML = msg;
     messages.appendChild(newmsg);
 }
