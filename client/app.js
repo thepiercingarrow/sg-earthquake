@@ -5,6 +5,7 @@ socket.on('players', function(p){
 var TAU = 2 * Math.PI,
     W = window.innerWidth,
     H = window.innerHeight;
+
 function DIST(x1, y1, x2, y2){
     var dx = x1 - x2, dy = y1 - y2;
     return Math.sqrt(dx*dx + dy*dy);
@@ -25,12 +26,12 @@ var ct = c.getContext("2d");
 ct.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
-    appendmessage("drew circle | x: " + x + ", y: " + y + ", r: " + r, "green");
+    appendmessage("drew circle | x: " + x + ", y: " + y + ", r: " + r, "dbg");
 };
 
 function update(e) {
     socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
-    appendmessage(name + " => x: " + e.clientX + ", y: " + e.clientY, "red");
+    appendmessage(name + " => x: " + e.clientX + ", y: " + e.clientY, "dbg");
 }
 
 function draw() {
