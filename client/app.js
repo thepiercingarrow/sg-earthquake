@@ -28,7 +28,7 @@ ct.drawCircle = function(x,y,r){
 
 function update(e) {
     socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
-    appendmessage("name: " + name + "x: " + e.clientX + ", y: " + e.clientY}, "red");
+    appendmessage("name: " + name + "x: " + e.clientX + ", y: " + e.clientY, "red");
 }
 
 function draw() {
