@@ -18,7 +18,7 @@ io.on('connection', function(socket){
 	name = p.name;
 	players[p.name] = p;
 	io.emit('players', players);
-    	console.log("player updated: " + players[name].name);
+    	console.log("player updated: " + players[name]);
     });
     socket.on('disconnect', function(p){
     	console.log("player disconnected: " + players[name].name);
