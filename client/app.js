@@ -38,7 +38,7 @@ var c = document.getElementById("canvas");
 c.width = W; c.height = H;
 
 var players = {};
-player[name] = {name: name,
+players[name] = {name: name,
             x: W/2,
             y: H/2,
             size: 1/20
