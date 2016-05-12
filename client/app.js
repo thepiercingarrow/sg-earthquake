@@ -1,7 +1,7 @@
 socket.on('players', function(p){
     players = p;
 });
-//===================================================================================
+
 var TAU = 2 * Math.PI,
     W = window.innerWidth,
     H = window.innerHeight;
@@ -28,7 +28,7 @@ ct.drawCircle = function(x,y,r){
 
 function update(e) {
     socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
-    console.log({name: name, x: e.clientX, y: e.clientY});
+    appendmessage({name: name, x: e.clientX, y: e.clientY}, red);
 }
 
 function draw() {
