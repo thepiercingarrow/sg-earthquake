@@ -61,7 +61,7 @@ function draw() {
 }
 
 function main() {
-    update();
+   // update();
     draw();
     requestAnimationFrame(main);
 }
