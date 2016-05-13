@@ -1,4 +1,8 @@
-#canvas {
+body {
+    background-image: url("/img/bg.jpg");
+}
+
+.canvas {
     position: fixed;
     top: 0;
     left: 0;
