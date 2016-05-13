@@ -2,6 +2,10 @@ body {
     background-image: url("/img/bg.jpg");
 }
 
+body:after {
+    opacity: 0.6;
+}
+
 .canvas {
     position: fixed;
     top: 0;
