@@ -1,10 +1,5 @@
 body {
-    background-image: url("/img/bg.jpg");
-}
-
-body::after {
-    background-image: url("/img/bg.jpg");
-    opacity: 0.6;
+    background-image: url("/img/image.jpeg");
 }
 
 .canvas {
