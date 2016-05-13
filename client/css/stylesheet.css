@@ -1,9 +1,9 @@
 body {
-    background-image: url("/img/bg.jpg");
+    
 }
 
-body:before {
-    color: white;
+body::after {
+    background-image: url("/img/bg.jpg");
     opacity: 0.6;
 }
 
