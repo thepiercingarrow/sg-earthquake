@@ -27,6 +27,10 @@
     height: 285px;
 }
 
+.chatbox .messages li.player {
+    color: yellow;
+}
+
 .chatbox .chatbar {
     pointer-events: all;
     box-sizing: border-box;
