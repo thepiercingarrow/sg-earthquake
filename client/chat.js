@@ -4,7 +4,7 @@ var name = prompt("Enter a nickname.");
 var messages = document.getElementById('messages');
 
 $('.chatbar').bind("enterKey",function(e){
-    socket.emit('message', name + ": " + $('.chatbar').val());
+    socket.emit('message', $('.chatbar').val());
     var msg = $('.chatbar').val();
     $('.chatbar').val('');
     return false;
@@ -15,8 +15,8 @@ $('.chatbar').keyup(function(e){
 	$(this).trigger("enterKey");
 });
 
-socket.on('message', function(msg){
-    appendmessage(msg.text, msg.color);
+socket.on('message', function(m){
+    appendmessage(m.msg, m.type);
 });
 
 function appendmessage(msg, type, player) {
