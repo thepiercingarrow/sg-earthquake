@@ -3,6 +3,7 @@ body {
 }
 
 body:after {
+    color: white;
     opacity: 0.6;
 }
 
