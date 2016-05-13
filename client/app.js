@@ -2,14 +2,7 @@ socket.on('players', function(p){
     players = p;
 });
 
-var TAU = 2 * Math.PI,
-    W = window.innerWidth,
-    H = window.innerHeight;
-
-function DIST(x1, y1, x2, y2){
-    var dx = x1 - x2, dy = y1 - y2;
-    return Math.sqrt(dx*dx + dy*dy);
-}
+var W = window.innerWidth, H = window.innerHeight;
 
 var c = document.getElementById("canvas");
 
