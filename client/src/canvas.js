@@ -14,6 +14,6 @@ ct.drawCircle = function(x,y,r){
 };
 
 window.addEventListener('resize', function(){
-    c.width = W = window.innerWidth;
-    c.height = H = window.innerHeight;
+    W = window.innerWidth, c.width = W;
+    H = window.innerHeight, c.height = H;
 }
