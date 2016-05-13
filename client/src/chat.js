@@ -26,7 +26,7 @@ function appendmessage(msg, type, player) {
     var newmsg = document.createElement('li');
     newmsg.className = type;
     if (type == "player")
-        newmsg.innerHTML = "<b>" + player + "</b>" + msg;
+        newmsg.innerHTML = "<b>" + player + ": </b>" + msg;
     else
         newmsg.innerHTML = msg;
     messages.appendChild(newmsg);
