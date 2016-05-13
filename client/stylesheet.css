@@ -31,6 +31,10 @@
     color: yellow;
 }
 
+.chatbox .messages li.dbg {
+    color: red;
+}
+
 .chatbox .chatbar {
     pointer-events: all;
     box-sizing: border-box;
