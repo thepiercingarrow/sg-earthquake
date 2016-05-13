@@ -6,7 +6,7 @@ c.width = W; c.height = H;
 
 var ct = c.getContext("2d");
 
-ct.font = "20px Arial";
+ct.font = "20px Monaco";
 
 ct.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
