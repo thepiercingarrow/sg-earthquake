@@ -12,3 +12,8 @@ ct.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
 };
+
+window.addEventListener('resize', function(){
+    c.width = W = window.innerWidth;
+    c.height = H = window.innerHeight;
+}
