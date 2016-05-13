@@ -1,5 +1,4 @@
-var express = require('express'),
-    app = express();
+var express = require('express'), app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
@@ -11,8 +10,8 @@ app.use(express.static('client'));
 
 io.on('connection', function(socket){
     var name;
-    socket.on('message', function(text){
-	io.emit('message', {color: "blue", text: text});
+    socket.on('p_message', function(m){
+	io.emit('p_message', {msg: m.msg, type: "player", player: name});
     });
     socket.on('player-update', function(p){
 	name = p.name;
