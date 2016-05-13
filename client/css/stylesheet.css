@@ -2,7 +2,7 @@ body {
     background-image: url("/img/bg.jpg");
 }
 
-body:after {
+body:before {
     color: white;
     opacity: 0.6;
 }
