@@ -17,13 +17,12 @@
     border: 0;
     background: transparent;
     pointer-events: none;
+    font-family: monaco, monospace;
 }
 
 .chatbox .messages {
-    padding: 5px;
     margin: 0;
     list-style: none;
-    box-sizing: border-box;
     height: 285px;
 }
 
@@ -36,12 +35,9 @@
 }
 
 .chatbox .chatbar {
-    pointer-events: all;
-    box-sizing: border-box;
     width: 100%;
-    padding: 8px;
-    background: transparent;
     border: none;
-    border-top: 1px solid #DDD;
     outline: none;
+    background: transparent;
+    pointer-events: all;
 }
