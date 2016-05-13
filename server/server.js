@@ -10,8 +10,8 @@ app.use(express.static('client'));
 
 io.on('connection', function(socket){
     var name;
-    socket.on('p_message', function(m){
-	io.emit('p_message', {msg: m.msg, type: "player", player: name});
+    socket.on('p_message', function(msg){
+	io.emit('p_message', {msg: msg, type: "player", player: name});
     });
     socket.on('player-update', function(p){
 	name = p.name;
