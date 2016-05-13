@@ -18,7 +18,9 @@ function draw() {
     ct.clearRect(0, 0, W, H);
     ct.beginPath();
     for (var p in players) {
-	ct.drawCircle(players[p].x, players[p].y, 20);
+        var x = players[p].x, y = players[p].y;
+	ct.fillText(players[p].name, x, y - 20);
+	ct.drawCircle(x, y, 20);
     }
     ct.stroke();
     ct.closePath();
