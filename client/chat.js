@@ -2,11 +2,11 @@ var socket = io();
 var name = prompt("Enter a nickname.");
 
 var messages = document.getElementById('messages');
+var chatbar = document.getElementById('chatbar');
 
-$('.chatbar').bind("enterKey",function(e){
-    socket.emit('p_message', $('.chatbar').val());
-    var msg = $('.chatbar').val();
-    $('.chatbar').val('');
+$('.chatbar').bind("enterKey", function(e){
+    socket.emit('p_message', chatbar.value);
+    chatbar.value = "";
     return false;
 });
 
