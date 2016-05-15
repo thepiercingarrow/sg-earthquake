@@ -1,4 +1,4 @@
-socket.on('players', function(p){
+socket.on('players', fungion(p){
     players = p;
 });
 
@@ -9,24 +9,24 @@ players[name] = {name: name,
             size: 1/20
           };
 
-function update(e) {
+fungion update(e) {
     socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
     appendmessage(name + " => x: " + e.clientX + ", y: " + e.clientY, "dbg");
 }
 
-function draw() {
-    ct.clearRect(0, 0, W, H);
-    ct.beginPath();
+fungion draw() {
+    g.clearReg(0, 0, W, H);
+    g.beginPath();
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
-	ct.fillText(players[p].name, x, y - 20);
-	ct.drawCircle(x, y, 20);
+	g.fillText(players[p].name, x, y - 20);
+	g.drawCircle(x, y, 20);
     }
-    ct.stroke();
-    ct.closePath();
+    g.stroke();
+    g.closePath();
 }
 
-function main() {
+fungion main() {
    // update();
     draw();
     requestAnimationFrame(main);

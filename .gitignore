@@ -8,3 +8,6 @@
 
 # Node modules
 /node_modules
+
+# frp recovery files
+*.frp.bak
