@@ -25,6 +25,7 @@ body {
 }
 
 .chatbox .messages {
+    padding: 0;
     margin: 0;
     list-style: none;
     height: 285px;
