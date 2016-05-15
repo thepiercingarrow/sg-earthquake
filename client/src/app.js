@@ -1,4 +1,4 @@
-socket.on('players', fungion(p){
+socket.on('players', function(p){
     players = p;
 });
 
@@ -9,12 +9,12 @@ players[name] = {name: name,
             size: 1/20
           };
 
-fungion update(e) {
+function update(e) {
     socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
     appendmessage(name + " => x: " + e.clientX + ", y: " + e.clientY, "dbg");
 }
 
-fungion draw() {
+function draw() {
     g.clearRect(0, 0, W, H);
     g.beginPath();
     for (var p in players) {
@@ -26,7 +26,7 @@ fungion draw() {
     g.closePath();
 }
 
-fungion main() {
+function main() {
    // update();
     draw();
     requestAnimationFrame(main);
