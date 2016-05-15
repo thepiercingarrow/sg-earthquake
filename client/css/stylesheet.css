@@ -26,9 +26,9 @@ body {
 }
 
 .chatbox .messages {
-    padding: 0;
     margin: 0;
     left-margin: 5;
+    padding: 0;
     list-style: none;
     height: 285px;
 }
@@ -50,4 +50,5 @@ body {
     pointer-events: all;
     font-family: inherit;
     font-size: inherit;
+    color: white;
 }
