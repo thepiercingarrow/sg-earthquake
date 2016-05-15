@@ -1,4 +1,4 @@
-var mouseX, mouseY;
+var mouseX, mouseY, mouseDown;
 
 c.addEventListener('mousemove', function(e){
     mouseX = e.clientX, mouseY = e.clientY;
