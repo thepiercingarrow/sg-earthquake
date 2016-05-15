@@ -9,9 +9,8 @@ players[name] = {name: name,
             size: 1/20
           };
 
-function update(e) {
-    socket.emit('player-update', {name: name, x: e.clientX, y: e.clientY});
-    appendmessage(name + " => x: " + e.clientX + ", y: " + e.clientY, "dbg");
+function update() {
+    socket.emit('player-update', {name: name, x: mouseX, y: mouseY});
 }
 
 function draw() {
@@ -27,7 +26,7 @@ function draw() {
 }
 
 function main() {
-   // update();
+    update();
     draw();
     requestAnimationFrame(main);
 }
