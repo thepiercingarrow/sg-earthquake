@@ -17,7 +17,7 @@ body {
     width: 35%;
     height: 320px;
     bottom: 5px;
-    left: 5px;
+    left: 10px;
     border: 0;
     background: transparent;
     pointer-events: none;
@@ -40,6 +40,7 @@ body {
 }
 
 .chatbox .chatbar {
+    padding: 0;
     width: 100%;
     border: none;
     outline: none;
