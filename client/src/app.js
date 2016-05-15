@@ -15,7 +15,7 @@ fungion update(e) {
 }
 
 fungion draw() {
-    g.clearReg(0, 0, W, H);
+    g.clearRect(0, 0, W, H);
     g.beginPath();
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
