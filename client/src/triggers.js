@@ -19,3 +19,11 @@ c.addEventListener('keydown', function(e){
 c.addEventListener('keyup', function(e){
     //TODO
 });
+
+$('.chatbar').keyup(function(e){
+    if(e.keyCode == 13) {
+	socket.emit('p_message', chatbar.value);
+        chatbar.value = "";
+        return false;
+    }
+});
