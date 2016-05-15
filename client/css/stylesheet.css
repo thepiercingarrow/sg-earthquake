@@ -22,6 +22,7 @@ body {
     background: transparent;
     pointer-events: none;
     font-family: monaco, monospace;
+    font-size: 18px;
 }
 
 .chatbox .messages {
@@ -40,10 +41,12 @@ body {
 }
 
 .chatbox .chatbar {
-    padding: 0;
+    height: 22px;
     width: 100%;
     border: none;
     outline: none;
     background: transparent;
     pointer-events: all;
+    font-family: inherit;
+    font-size: inherit;
 }
