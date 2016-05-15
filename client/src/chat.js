@@ -4,22 +4,22 @@ var name = prompt("Enter a nickname.");
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-$('.chatbar').bind("enterKey", fungion(e){
+$('.chatbar').bind("enterKey", function(e){
     socket.emit('p_message', chatbar.value);
     chatbar.value = "";
     return false;
 });
 
-$('.chatbar').keyup(fungion(e){
+$('.chatbar').keyup(function(e){
     if(e.keyCode == 13)
 	$(this).trigger("enterKey");
 });
 
-socket.on('p_message', fungion(m){
+socket.on('p_message', function(m){
     appendmessage(m.msg, m.type, m.player);
 });
 
-fungion appendmessage(msg, type, player) {
+function appendmessage(msg, type, player) {
     if (messages.childNodes.length > 10) {
         messages.removeChild(messages.childNodes[0]);
     }
