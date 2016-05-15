@@ -6,10 +6,11 @@
   </head>
   <body>
     <canvas id="canvas" onmousedown="update(event)">Your browser does not support the canvas element.</canvas>
+    <noscript>This game requires JavaScript.</noscript>
     <div class="floating">
       <div class="chatbox" id="chatbox">
         <ul id="messages" class="messages"></ul>
-        <input id="chatbar" type="text" class="chatbar" placeholder="Chat here..." maxlength="35" />
+        <input id="chatbar" type="text" class="chatbar" />
       </div>
     </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
