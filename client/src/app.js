@@ -10,7 +10,7 @@ players[name] = {name: name,
           };
 
 function update() {
-    socket.emit('player-update', {name: name, x: mouseX, y: mouseY});
+    socket.emit('player-update', {name: name, x: input.mouseX, y: input.mouseY});
 }
 
 function draw() {
