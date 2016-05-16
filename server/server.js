@@ -24,10 +24,10 @@ io.on('connection', function(socket){
 	io.emit('players', players);
     });
 
-    socket.on('spawn', function(p){
-	if (p.username != socket.username) {
-            io.emit('message', {msg: socket.username + ' has changed their name to ' + p.username + '.', type: 'alert'});
-            socket.username = p.username;
+    socket.on('spawn', function(input){
+	if (input.name != socket.username) {
+            io.emit('message', {msg: socket.username + ' has changed their name to ' + input.name + '.', type: 'alert'});
+            socket.username = input.name;
         }
         socket.join('arena');
     });
