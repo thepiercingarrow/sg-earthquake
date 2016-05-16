@@ -54,13 +54,13 @@ function canvas_input(key, state) {
 function chat_input(key) {
     switch (key) {
         case KEY_ENTER:
-	    socket.emit('p_message', chatbar.value);
+	    socket.emit('chat', chatbar.value);
             chatbar.value = "";
-    	    c.focus();
+    	    canvas.focus();
             break;
         case KEY_ESC:
 	    chatbar.value = "";
-    	    c.focus();
+    	    canvas.focus();
             break;
     }
 }
