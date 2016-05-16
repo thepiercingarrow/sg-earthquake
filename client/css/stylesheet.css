@@ -39,12 +39,12 @@ body {
 
 .chatbox .messages li.sys {
     color: white;
-    font-weight: bold;
+    font-style: italics;
 }
 
 .chatbox .messages li.alert {
     color: white;
-    font-style: italics;
+    font-weight: bold;
 }
 
 .chatbox .messages li.dbg {
