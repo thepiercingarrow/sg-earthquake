@@ -1,3 +1,4 @@
+var io = require('socket.io-client');
 var socket = io();
 
 socket.on('players', function(p){
