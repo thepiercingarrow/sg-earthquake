@@ -4,13 +4,14 @@ var KEY_GRAPPLE = 82,
     KEY_ENTER = 13,
     KEY_ESC = 27;
 
-var input = {};
-input.new = {
-    mouseX: 0,
-    mouseY: 0,
-    mouseDown: false,
-    grapple: false,
-    shield: false
+var input = {
+    new: {
+        mouseX: 0,
+        mouseY: 0,
+        mouseDown: false,
+        grapple: false,
+        shield: false
+    }
 };
 
 c.addEventListener('mousemove', function(e){
@@ -19,6 +20,7 @@ c.addEventListener('mousemove', function(e){
 
 c.addEventListener('mousedown', function(e){
     input.new.mouseDown = true;
+    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
 c.addEventListener('mouseup', function(e){
