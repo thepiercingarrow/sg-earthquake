@@ -5,6 +5,7 @@ var KEY_GRAPPLE = 82,
     KEY_ESC = 27;
 
 var input = {
+    old: {},
     new: {
         mouseX: 0,
         mouseY: 0,
