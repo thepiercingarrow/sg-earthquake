@@ -4,14 +4,16 @@ var io = require('socket.io')(http);
 
 var path = require('path');
 
+var port = process.env.PORT;
+
 var players = {};
 
 app.use(express.static('client'));
 
 io.on('connection', function(socket){
-    var name;
-    socket.on('p_message', function(msg){
-	io.emit('p_message', {msg: msg, type: "player", player: name});
+    socket.username = 'Unnamed grappler';
+    socket.on('chat', function(msg){
+	io.emit('message', {msg: msg, type: 'p', player: socket.name});
     });
     socket.on('player-update', function(p){
 	name = p.name;
@@ -19,9 +21,13 @@ io.on('connection', function(socket){
 	io.emit('players', players);
     });
     socket.on('disconnect', function(p){
-	delete players[name];
+	io.emit('message', {msg: socket.username + ' has disconnected', type: "sys"});
     })
 });
 
-http.listen(process.env.PORT || 8000);
-console.log('listening on port ' + process.env.PORT);
+if (!port) {
+    console.log('Please specify a port.');
+    process.exit(1);
+}
+http.listen(port);
+console.log('listening on port %d', port);
