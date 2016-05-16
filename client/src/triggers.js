@@ -4,7 +4,8 @@ var KEY_GRAPPLE = 82,
     KEY_ENTER = 13,
     KEY_ESC = 27;
 
-var input = {
+var input = {};
+input.new = {
     mouseX: 0,
     mouseY: 0,
     mouseDown: false,
@@ -13,15 +14,15 @@ var input = {
 };
 
 c.addEventListener('mousemove', function(e){
-    input.mouseX = e.clientX, input.mouseY = e.clientY;
+    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY;
 });
 
 c.addEventListener('mousedown', function(e){
-    input.mouseDown = true;
+    input.new.mouseDown = true;
 });
 
 c.addEventListener('mouseup', function(e){
-    input.mouseDown = false;
+    input.new.mouseDown = false;
 });
 
 c.addEventListener('keydown', function(e){
@@ -41,9 +42,9 @@ function canvas_input(key, state) {
         case KEY_CHAT_FOCUS:
 	    chatbar.focus(); break;
         case KEY_GRAPPLE:
-	    input.grapple = state; break;
+	    input.new.grapple = state; break;
         case KEY_SHIELD:
-	    input.shield = state; break;
+	    input.new.shield = state; break;
     }
 }
 
