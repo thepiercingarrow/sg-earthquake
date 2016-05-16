@@ -10,10 +10,8 @@ players[name] = {name: name,
           };
 
 function update() {
-appendmessage("comparing", 'dbg');
     if (objcmp(input.old, input.new) == false) {
         socket.emit('player-update', {name: name, x: input.new.mouseX, y: input.new.mouseY});
-appendmessage("sent", 'dbg');
     }
 }
 
