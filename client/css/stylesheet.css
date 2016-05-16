@@ -37,6 +37,16 @@ body {
     color: yellow;
 }
 
+.chatbox .messages li.sys {
+    color: white;
+    font-weight: bold;
+}
+
+.chatbox .messages li.alert {
+    color: white;
+    font-style: italics;
+}
+
 .chatbox .messages li.dbg {
     color: red;
 }
