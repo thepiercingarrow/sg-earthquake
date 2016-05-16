@@ -1,10 +1,10 @@
 var W = window.innerWidth, H = window.innerHeight;
 
-var c = document.getElementById("canvas");
+var canvas = document.getElementById("canvas");
 
-c.width = W; c.height = H;
+canvas.width = W; canvas.height = H;
 
-var g = c.getContext("2d");
+var g = canvas.getContext("2d");
 
 g.font = "20px Monaco";
 
@@ -14,6 +14,6 @@ g.drawCircle = function(x,y,r){
 };
 
 window.addEventListener('resize', function(){
-    W = window.innerWidth, c.width = W;
-    H = window.innerHeight, c.height = H;
+    W = window.innerWidth, canvas.width = W;
+    H = window.innerHeight, canvas.height = H;
 });
