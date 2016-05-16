@@ -9,7 +9,7 @@ function appendmessage(msg, type, player) {
     }
     var newmsg = document.createElement('li');
     newmsg.className = type;
-    if (type == "player")
+    if (type == 'p')
         newmsg.innerHTML = "<b>" + player + ": </b>" + msg;
     else
         newmsg.innerHTML = msg;
