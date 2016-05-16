@@ -16,7 +16,7 @@ io.on('connection', function(socket){
     socket.on('player-update', function(p){
 	name = p.name;
 	players[p.name] = p;
-	io.emit('players', players);
+	io.to('arena').emit('players', players);
     });
     socket.on('disconnect', function(p){
 	delete players[name];
