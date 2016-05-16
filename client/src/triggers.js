@@ -1,31 +1,28 @@
-var mouseX, mouseY, mouseDown;
-var KEY_R = 82,
-    KEY_T = 84,
-    KEY_SPACE = 32,
-    KEY_ENTER = 13;
+var KEY_GRAPPLE = 82,
+    KEY_CHAT_FOCUS = 84,
+    KEY_SHIELD = 32,
+    KEY_ENTER = 13,
+    KEY_ESC = 27;
+
+var input = {
+    mouseX: 0,
+    mouseY: 0,
+    mouseDown: false,
+    grapple: false,
+    shield: false
+};
 
 c.addEventListener('mousemove', function(e){
-    mouseX = e.clientX, mouseY = e.clientY;
+    input.mouseX = e.clientX, input.mouseY = e.clientY;
 });
 
 c.addEventListener('mousedown', function(e){
-    mouseDown = true;
+    input.mouseDown = true;
 });
 
-c.addEventListener('mousedown', function(e){
-    mouseDown = false;
+c.addEventListener('mouseup', function(e){
+    input.mouseDown = false;
 });
-
-function canvas_input(key, state) {
-    switch (key) {
-        case KEY_T:
-	    chatbar.focus(); break;
-        case KEY_R:
-	    input.grapple = state; break;
-        case KEY_SPACE:
-	    input.shield = state; break;
-    }
-}
 
 c.addEventListener('keydown', function(e){
     canvas_input(e.keyCode, true);
@@ -36,9 +33,30 @@ c.addEventListener('keyup', function(e){
 });
 
 chatbar.addEventListener('keydown', function(e){
-    if (e.keyCode == KEY_ENTER) {
-        socket.emit('p_message', chatbar.value);
-        chatbar.value = "";
-	c.focus();
-    }
+    chat_input(e.keyCode);
 });
+
+function canvas_input(key, state) {
+    switch (key) {
+        case KEY_CHAT_FOCUS:
+	    chatbar.focus(); break;
+        case KEY_GRAPPLE:
+	    input.grapple = state; break;
+        case KEY_SHIELD:
+	    input.shield = state; break;
+    }
+}
+
+function chat_input(key) {
+    switch (key) {
+        case KEY_ENTER:
+	    socket.emit('p_message', chatbar.value);
+            chatbar.value = "";
+    	    c.focus();
+            break;
+        case KEY_ESC:
+	    chatbar.value = "";
+    	    c.focus();
+            break;
+    }
+}
