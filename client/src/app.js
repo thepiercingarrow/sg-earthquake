@@ -1,7 +1,3 @@
-socket.on('players', function(p){
-    players = p;
-});
-
 var players = {};
 players[name] = {name: name,
             x: W/2,

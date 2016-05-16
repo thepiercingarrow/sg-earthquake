@@ -15,24 +15,24 @@ var input = {
     }
 };
 
-c.addEventListener('mousemove', function(e){
+canvas.addEventListener('mousemove', function(e){
     input.new.mouseX = e.clientX, input.new.mouseY = e.clientY;
 });
 
-c.addEventListener('mousedown', function(e){
+canvas.addEventListener('mousedown', function(e){
     input.new.mouseDown = true;
     input.new.mouseX = e.clientX, input.new.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
-c.addEventListener('mouseup', function(e){
+canvas.addEventListener('mouseup', function(e){
     input.new.mouseDown = false;
 });
 
-c.addEventListener('keydown', function(e){
+canvas.addEventListener('keydown', function(e){
     canvas_input(e.keyCode, true);
 });
 
-c.addEventListener('keyup', function(e){
+canvas.addEventListener('keyup', function(e){
     canvas_input(e.keyCode, false);
 });
 
@@ -54,13 +54,13 @@ function canvas_input(key, state) {
 function chat_input(key) {
     switch (key) {
         case KEY_ENTER:
-	    socket.emit('p_message', chatbar.value);
+	    socket.emit('chat', chatbar.value);
             chatbar.value = "";
-    	    c.focus();
+    	    canvas.focus();
             break;
         case KEY_ESC:
 	    chatbar.value = "";
-    	    c.focus();
+    	    canvas.focus();
             break;
     }
 }

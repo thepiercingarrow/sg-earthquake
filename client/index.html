@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
   </head>
   <body>
-    <canvas id="canvas">Your browser does not support the canvas element.</canvas>
+    <canvas id="canvas" tabindex="-1">Your browser does not support the canvas element.</canvas>
     <noscript>This game requires JavaScript.</noscript>
     <div class="floating">
       <div class="chatbox" id="chatbox">
@@ -13,12 +13,11 @@
         <input id="chatbar" type="text" class="chatbar" />
       </div>
     </div>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src='src/math.js'></script>
     <script src='src/chat.js'></script>
     <script src='src/canvas.js'></script>
     <script src='src/input.js'></script>
+    <script src='src/socket.js'></script>
     <script src='src/app.js'></script>
   </body>
 </html>
