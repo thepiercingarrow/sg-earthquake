@@ -12,7 +12,6 @@ players[name] = {name: name,
 function update() {
     if (objcmp(input.old, input.new) == false) {
         socket.emit('player-update', {name: name, x: input.mouseX, y: input.mouseY});
-    objcp(input.new, input.old);
     }
 }
 
