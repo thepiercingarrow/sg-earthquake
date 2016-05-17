@@ -37,7 +37,7 @@ canvas.addEventListener('keyup', function(e){
 });
 
 chatbar.addEventListener('keydown', function(e){
-    appendmessage('pressed ' + e.keyCode, 'dbg');
+    dbg('pressed ' + e.keyCode);
     chat_input(e.keyCode);
 });
 
