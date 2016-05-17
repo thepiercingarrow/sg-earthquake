@@ -33,7 +33,7 @@ body {
     height: 285px;
 }
 
-.chatbox .messages li.player {
+.chatbox .messages li.p {
     color: yellow;
 }
 
