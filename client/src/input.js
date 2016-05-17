@@ -55,6 +55,7 @@ function canvas_input(key, state) {
 function chat_input(key) {
     switch (key) {
         case KEY_ENTER:
+            dbg('enter case');
 	    socket.emit('chat', chatbar.value);
             chatbar.value = "";
     	    canvas.focus();
