@@ -15,3 +15,7 @@ function appendmessage(msg, type, player) {
         newmsg.innerHTML = msg;
     messages.appendChild(newmsg);
 }
+
+function dbg(msg) {
+    appendmessage(msg, 'dbg');
+}
