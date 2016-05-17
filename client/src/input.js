@@ -59,6 +59,7 @@ function chat_input(key) {
 	    socket.emit('chat', chatbar.value);
             chatbar.value = "";
     	    canvas.focus();
+            dbg('break');
             break;
         case KEY_ESC:
 	    chatbar.value = "";
