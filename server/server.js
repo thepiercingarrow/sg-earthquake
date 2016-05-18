@@ -33,7 +33,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('chat', function(msg){
-	io.emit('message', {msg: msg, type: 'p', player: socket.name});
+	io.emit('message', {msg: msg, type: 'p', player: socket.username});
     });
 
     socket.on('disconnect', function(p){
