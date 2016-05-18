@@ -21,9 +21,9 @@ body {
     left: 10px;
     border: 0;
     background: transparent;
-    pointer-events: none;
     font-family: monaco, monospace;
     font-size: 18px;
+    pointer-events: none;
 }
 
 .chatbox .messages {
@@ -32,6 +32,10 @@ body {
     padding: 0;
     list-style: none;
     height: 285px;
+    pointer-events: inherit;
+}
+
+.chatbox .messages li {
     pointer-events: inherit;
 }
 
