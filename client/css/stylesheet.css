@@ -9,12 +9,9 @@ body {
     outline: none;
 }
 
-.floating {
-    z-index: 1;
-}
-
 .chatbox {
     position: absolute;
+    z-index: 1;
     width: 35%;
     height: 320px;
     bottom: 5px;
@@ -67,4 +64,12 @@ body {
     font-family: inherit;
     font-size: inherit;
     color: white;
+}
+
+.leaderboard {
+    z-index: 1;
+}
+
+.menuwrapper {
+    z-index: 2;
 }
