@@ -2,16 +2,20 @@ body {
     background-image: url("/img/image.jpeg");
 }
 
+#gamewrapper {
+    z-index: 1;
+}
+
 .canvas {
     position: fixed;
     top: 0;
     left: 0;
     outline: none;
+    z-index: 0;
 }
 
 .chatbox {
     position: absolute;
-    z-index: 1;
     width: 35%;
     height: 320px;
     bottom: 5px;
@@ -67,7 +71,6 @@ body {
 }
 
 .leaderboard {
-    z-index: 1;
 }
 
 #menuwrapper {
