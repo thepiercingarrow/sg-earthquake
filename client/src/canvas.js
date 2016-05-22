@@ -1,5 +1,7 @@
 var W = window.innerWidth, H = window.innerHeight;
 
+var canvasFocus = 0;
+
 var canvas = document.getElementById("canvas");
 
 canvas.width = W; canvas.height = H;
@@ -16,4 +18,9 @@ g.drawCircle = function(x,y,r){
 window.addEventListener('resize', function(){
     W = window.innerWidth, canvas.width = W;
     H = window.innerHeight, canvas.height = H;
+});
+
+window.addEventListener('blur', function(){
+    if (canvasFocus)
+        canvas.focus();
 });
