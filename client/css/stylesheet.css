@@ -76,5 +76,5 @@ body {
 #menuwrapper {
     z-index: 2;
     opacity: 0.5;
-    color: gray;
+    background-color: gray;
 }
