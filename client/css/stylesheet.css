@@ -74,7 +74,11 @@ body {
 }
 
 #menuwrapper {
-    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
     opacity: 0.5;
     background-color: gray;
+    z-index: 2;
 }
