@@ -74,7 +74,7 @@ body {
 }
 
 #menuwrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -86,6 +86,7 @@ body {
 }
 
 .name {
+    position: absolute;
     top: 20%;
     height: 22px;
     margin: auto;
