@@ -89,7 +89,8 @@ body {
     position: absolute;
     top: 20%;
     left: 30%;
-    height: 22px;
+    height: 15%;
+    width: 40%;
     opacity: 0.85;
     background-color: white;
 }
