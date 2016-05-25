@@ -89,8 +89,10 @@ body {
     position: absolute;
     top: 20%;
     left: 30%;
-    height: 15%;
+    height: 50px;
     width: 40%;
     opacity: 0.85;
     background-color: white;
+    font-family: Ubuntu;
+    font-size: 45px;
 }
