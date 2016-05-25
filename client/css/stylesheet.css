@@ -88,8 +88,8 @@ body {
 .name {
     position: absolute;
     top: 20%;
+    left: 30%;
     height: 22px;
     opacity: 0.85;
     background-color: white;
-    text-align: center;
 }
