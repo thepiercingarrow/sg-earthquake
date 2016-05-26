@@ -91,9 +91,10 @@ body {
 }
 
 .name {
-    left: 30%;
+    position: inherit;
+    left: 25%;
     height: 50px;
-    width: 40%;
+    width: 30%;
     opacity: 0.85;
     background-color: white;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -102,4 +103,8 @@ body {
 }
 
 .play {
+    position: inherit;
+    left: 70;
+    height: 50px;
+    width: 25%;
 }
