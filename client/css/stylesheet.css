@@ -85,9 +85,12 @@ body {
     z-index: 2;
 }
 
-.name {
+#col1 {
     position: absolute;
     top: 20%;
+}
+
+.name {
     left: 30%;
     height: 50px;
     width: 40%;
