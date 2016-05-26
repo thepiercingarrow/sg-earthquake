@@ -98,9 +98,13 @@ body {
     width: 100%;
 }
 
+.center {
+    text-align: center;
+    width: 50%;
+}
+
 .name {
     position: absolute;
-    left: 25%;
     height: 50px;
     width: 30%;
     opacity: 0.85;
