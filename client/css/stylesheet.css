@@ -1,4 +1,5 @@
 body {
+    position: fixed;
     background-image: url("/img/image.jpeg");
 }
 
@@ -91,7 +92,7 @@ body {
 }
 
 .name {
-    position: inherit;
+    position: absolute;
     left: 25%;
     height: 50px;
     width: 30%;
@@ -103,8 +104,8 @@ body {
 }
 
 .play {
-    position: inherit;
-    left: 70;
+    position: absolute;
+    left: 70%;
     height: 50px;
     width: 25%;
 }
