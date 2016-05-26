@@ -107,7 +107,7 @@ body {
 
 .name {
     height: 50px;
-    width: 70%;
+    width: 67%;
     opacity: 0.85;
     background-color: white;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -118,7 +118,7 @@ body {
 .play {
     left: 70%;
     height: 60px;
-    width: 30%;
+    width: 27%;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 45px;
 }
