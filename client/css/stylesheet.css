@@ -89,6 +89,7 @@ body {
 #col1 {
     position: absolute;
     top: 20%;
+    width: 100%;
 }
 
 .name {
