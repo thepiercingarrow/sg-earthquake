@@ -94,6 +94,7 @@ body {
 
 .center {
     margin: 0 auto;
+    padding-top: 20%;
     width: 50%;
     height: 100%;
 }
