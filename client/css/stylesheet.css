@@ -92,17 +92,18 @@ body {
     z-index: 2;
 }
 
+.center {
+    position: absolute;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+}
+
 #col1 {
     position: absolute;
     top: 20%;
     width: 100%;
     height: 60px;
-}
-
-.center {
-    margin: 0 auto;
-    width: 50%;
-    height: 100%;
 }
 
 .name {
