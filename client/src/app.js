@@ -5,6 +5,12 @@ players[name] = {name: name,
             size: 1/20
           };
 
+function start() {
+    menu.style.display = 'none';
+    requestAnimationFrame(main);
+    socket.emit('spawn', name);
+}
+
 function update() {
     if (objcmp(input.old, input.new) == false) {
         socket.emit('player-update', {name: name, x: input.new.mouseX, y: input.new.mouseY});
@@ -28,5 +34,3 @@ function main() {
     draw();
     requestAnimationFrame(main);
 }
-
-requestAnimationFrame(main);

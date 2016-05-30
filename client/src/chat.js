@@ -1,5 +1,3 @@
-var name = prompt("Enter a nickname.");
-
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 

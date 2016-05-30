@@ -1,7 +1,5 @@
 var socket = io();
 
-socket.emit('spawn', name);
-
 socket.on('players', function(p){
     players = p;
 });
