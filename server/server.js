@@ -3,11 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
-var port = process.env.PORT;
-if (!port) {
-    console.log('Please specify a port.');
-    process.exit(1);
-}
+var port = process.env.PORT || 8000;
+
 http.listen(port);
 console.log('listening on port %d', port);
 app.use(express.static('client'));
