@@ -1,3 +1,11 @@
+var canvas = document.getElementById("canvas");
+var g = canvas.getContext("2d");
+var menu = document.getElementById('menuwrapper');
+var namebar = document.getElementById('name'), name;
+var play = document.getElementById('play');
+var messages = document.getElementById('messages');
+var chatbar = document.getElementById('chatbar');
+
 var socket = io();
 
 socket.on('players', function(p){
@@ -28,11 +36,8 @@ function objcmp(o1, o2) {
 
 var W = window.innerWidth, H = window.innerHeight;
 
-var canvas = document.getElementById("canvas");
 
 canvas.width = W; canvas.height = H;
-
-var g = canvas.getContext("2d");
 
 g.font = "20px Monaco";
 
@@ -46,18 +51,11 @@ window.addEventListener('resize', function(){
     H = window.innerHeight, canvas.height = H;
 });
 
-var menu = document.getElementById('menuwrapper');
-var namebar = document.getElementById('name'), name;
-var play = document.getElementById('play');
-
 namebar.addEventListener('change', function(e){
     name = namebar.value
 });
 
 play.addEventListener('click', start);
-
-var messages = document.getElementById('messages');
-var chatbar = document.getElementById('chatbar');
 
 function appendmessage(msg, type, player) {
     if (messages.childNodes.length > 10) {
