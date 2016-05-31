@@ -124,7 +124,8 @@ chatbar.addEventListener('keydown', function(e){
 function canvas_input(key, state) {
     switch (key) {
         case KEY_CHAT_FOCUS:
-	    chatbar.focus(); break;
+	    if (!state)
+		chatbar.focus(); break;
         case KEY_GRAPPLE:
 	    input.new.grapple = state; break;
         case KEY_SHIELD:
