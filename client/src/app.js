@@ -83,7 +83,7 @@ players[name] = {name: name,
             size: 1/20
           };
 
-var start = function(e) {
+function start(e) {
     menu.style.display = 'none';
     requestAnimationFrame(main);
     socket.emit('spawn', name);
