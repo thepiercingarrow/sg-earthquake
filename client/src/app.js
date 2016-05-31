@@ -1,3 +1,6 @@
+
+var W = window.innerWidth, H = window.innerHeight;
+
 var canvas = document.getElementById("canvas");
 var g = canvas.getContext("2d");
 var menu = document.getElementById('menuwrapper');
@@ -34,12 +37,7 @@ function objcmp(o1, o2) {
     return eq;
 }
 
-var W = window.innerWidth, H = window.innerHeight;
-
-
 canvas.width = W; canvas.height = H;
-
-g.font = "20px Monaco";
 
 g.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
@@ -82,9 +80,16 @@ players[name] = {name: name,
           };
 
 function start(e) {
-    menu.style.display = 'none';
-    requestAnimationFrame(main);
     socket.emit('spawn', name);
+    menu.style.display = 'none';
+    canvas.focus();
+    requestAnimationFrame(main);
+}
+
+function main() {
+    update();
+    draw();
+    requestAnimationFrame(main);
 }
 
 function update() {
@@ -98,15 +103,10 @@ function draw() {
     g.beginPath();
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
+	g.font = "20px Monaco";
 	g.fillText(players[p].name, x, y - 20);
 	g.drawCircle(x, y, 20);
     }
     g.stroke();
     g.closePath();
-}
-
-function main() {
-    update();
-    draw();
-    requestAnimationFrame(main);
 }
