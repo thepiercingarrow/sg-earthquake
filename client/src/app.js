@@ -1,5 +1,8 @@
-
-var W = window.innerWidth, H = window.innerHeight;
+var KEY_GRAPPLE = 82;
+var KEY_CHAT_FOCUS = 84;
+var KEY_SHIELD = 32;
+var KEY_ENTER = 13;
+var KEY_ESC = 27;
 
 var canvas = document.getElementById("canvas");
 var g = canvas.getContext("2d");
@@ -26,6 +29,11 @@ function dist(x1, y1, x2, y2) {
     return Math.sqrt(dx*dx + dy*dy);
 }
 
+g.drawCircle = function(x,y,r){
+    this.moveTo(x+r,y);
+    this.arc(x,y,r,0,TAU);
+};
+
 function objcmp(o1, o2) {
     var eq = true;
     for (var p in o2) {
@@ -37,12 +45,8 @@ function objcmp(o1, o2) {
     return eq;
 }
 
+var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
-
-g.drawCircle = function(x,y,r){
-    this.moveTo(x+r,y);
-    this.arc(x,y,r,0,TAU);
-};
 
 window.addEventListener('resize', function(){
     W = window.innerWidth, canvas.width = W;
@@ -73,17 +77,73 @@ function dbg(msg) {
 }
 
 var players = {};
-players[name] = {name: name,
-            x: W/2,
-            y: H/2,
-            size: 1/20
-          };
 
 function start(e) {
     socket.emit('spawn', name);
     menu.style.display = 'none';
     canvas.focus();
     requestAnimationFrame(main);
+}
+
+var input = {
+    old: {},
+    new: {
+        mouseX: 0,
+        mouseY: 0,
+        mouseDown: false,
+        grapple: false,
+        shield: false
+    }
+};
+
+canvas.addEventListener('mousemove', function(e){
+    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY;
+});
+
+canvas.addEventListener('mousedown', function(e){
+    input.new.mouseDown = true;
+    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY; //temp 4 mobile dbg
+});
+
+canvas.addEventListener('mouseup', function(e){
+    input.new.mouseDown = false;
+});
+
+canvas.addEventListener('keydown', function(e){
+    canvas_input(e.keyCode, true);
+});
+
+canvas.addEventListener('keyup', function(e){
+    canvas_input(e.keyCode, false);
+});
+
+chatbar.addEventListener('keydown', function(e){
+    chat_input(e.keyCode);
+});
+
+function canvas_input(key, state) {
+    switch (key) {
+        case KEY_CHAT_FOCUS:
+	    chatbar.focus(); break;
+        case KEY_GRAPPLE:
+	    input.new.grapple = state; break;
+        case KEY_SHIELD:
+	    input.new.shield = state; break;
+    }
+}
+
+function chat_input(key) {
+    switch (key) {
+        case KEY_ENTER:
+	    socket.emit('chat', chatbar.value);
+            chatbar.value = "";
+    	    canvas.focus();
+            break;
+        case KEY_ESC:
+	    chatbar.value = "";
+    	    canvas.focus();
+            break;
+    }
 }
 
 function main() {
