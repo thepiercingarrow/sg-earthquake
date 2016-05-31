@@ -9,12 +9,14 @@ http.listen(port);
 console.log('listening on port %d', port);
 app.use(express.static('client'));
 
+var connections = new Map();
+var grapplers = new Map();
+var arena = new Map();
 
-var players = {};
+io.on('connection', onconnect);
 
-io.on('connection', function(socket){
-    socket.username = 'Unnamed grappler';
-
+function onconnect(socket) {
+    
     socket.on('player-update', function(p){
 	name = p.name;
 	players[p.name] = p;
@@ -36,4 +38,4 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(p){
 	io.emit('message', {msg: socket.username + ' has disconnected', type: "sys"});
     })
-});
+}
