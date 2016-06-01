@@ -16,7 +16,7 @@ var arena = new Map();
 io.on('connection', onconnect);
 
 function onconnect(socket) {
-    connections.prototype.set(socket.id, {});
+    connections.set(socket.id, {});
 
     socket.on('spawn', function(){
 	if (name == 'Unnamed grappler') {
