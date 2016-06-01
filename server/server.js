@@ -23,6 +23,8 @@ function onconnect(socket) {
     players.set(socket.id, {});
 
     socket.on('spawn', function(){
+	if (!players.get(socket.id).name)
+	    io.emit('msg', {type: 'sys', msg: '\'' + players.get(socket.id).name + '\' has joined the game.'});
 	grapplers.set(socket.id, new Player(players.get(socket.id).name));
         socket.join('arena');
     });
