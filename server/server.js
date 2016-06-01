@@ -9,20 +9,24 @@ http.listen(port);
 console.log('listening on port %d', port);
 app.use(express.static('client'));
 
-var connections = new Map();
+var players = new Map();
 var grapplers = new Map();
 var arena = new Map();
+
+function Player(name) {
+    this.name = name;
+}
 
 io.on('connection', onconnect);
 
 function onconnect(socket) {
-    connections.set(socket.id, {});
+    players.set(socket.id, {});
 
     socket.on('spawn', function(){
 	if (name == 'Unnamed grappler') {
             io.emit('message', {msg: socket.username + ' has changed their name to ' + name + '.', type: 'alert'});
-            username = name;
         }
+	grapplers.set(socket.id, new Player(players.get(socket.id).name);
         socket.join('arena');
     });
 
