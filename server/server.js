@@ -52,7 +52,7 @@ function onconnect(socket) {
     })
 }
 
-fuction physics() {
+function physics() {
     //todo
 }
 
