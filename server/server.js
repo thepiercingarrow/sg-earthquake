@@ -40,7 +40,7 @@ function onconnect(socket) {
 	players.get(socket.id).name = name;
 	if (grapplers.get(socket.id))
 	    grapplers.get(socket.id).name = name;
-    }
+    });
 
     socket.on('chat', function(msg){
 	io.emit('message', {msg: msg, type: 'p', player: players.get(socket.id).name});
