@@ -21,7 +21,7 @@ io.on('connection', onconnect);
 
 function onconnect(socket) {
     players.set(socket.id, {});
-    io.emit('msg', {type: 'sys', msg: '\'An unnamed grappler\' has connected.'});
+    io.emit('msg', {type: 'sys', msg: 'An unnamed grappler has connected.'});
     players.get(socket.id).name = 'Unnamed grappler';
 
     socket.on('spawn', function(){
