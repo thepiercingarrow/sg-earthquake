@@ -23,9 +23,6 @@ function onconnect(socket) {
     players.set(socket.id, {});
 
     socket.on('spawn', function(){
-	if (name == 'Unnamed grappler') {
-            io.emit('message', {msg: socket.username + ' has changed their name to ' + name + '.', type: 'alert'});
-        }
 	grapplers.set(socket.id, new Player(players.get(socket.id).name));
         socket.join('arena');
     });
