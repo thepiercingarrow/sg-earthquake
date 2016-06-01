@@ -37,10 +37,12 @@ function onconnect(socket) {
     });
 
     socket.on('chat', function(msg){
-	io.emit('message', {msg: msg, type: 'p', player: socket.username});
+	io.emit('message', {msg: msg, type: 'p', player: players.get(socket.id).name});
     });
 
     socket.on('disconnect', function(p){
-	io.emit('message', {msg: socket.username + ' has disconnected', type: "sys"});
+	grapplers.delete(socket.id);
+	players.delete(socket.id);
+	io.emit('message', {msg: player: players.get(socket.id).name} + ' has disconnected', type: "sys"});
     })
 }
