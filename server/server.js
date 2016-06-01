@@ -61,4 +61,4 @@ function send_arena() {
 }
 
 setInterval(physics, 15);
-setInterval(send-arena, 45);
+setInterval(send_arena, 45);
