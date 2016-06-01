@@ -32,7 +32,6 @@ function onconnect(socket) {
     socket.on('player-update', function(p){
 	name = p.name;
 	players[p.name] = p;
-	io.to('arena').emit('players', players);
     });
 
     socket.on('name-change', (name) => {
@@ -52,3 +51,14 @@ function onconnect(socket) {
 	players.delete(socket.id);
     })
 }
+
+fuction physics() {
+    //todo
+}
+
+function send_arena() {
+    io.to('arena').emit('players', players);
+}
+
+setInterval(physics, 15);
+setInterval(send-arena, 45);
