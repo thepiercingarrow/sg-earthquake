@@ -54,7 +54,9 @@ window.addEventListener('resize', function(){
 });
 
 namebar.addEventListener('change', function(e){
-    name = namebar.value
+    name = namebar.value;
+    input.name = name;
+    socket.emit('name-change', input.name);
 });
 
 play.addEventListener('click', start);
