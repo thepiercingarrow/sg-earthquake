@@ -18,7 +18,7 @@ socket.on('players', function(p){
     players = p;
 });
 
-socket.on('message', function(m){
+socket.on('msg', function(m){
     appendmessage(m.msg, m.type, m.player);
 });
 
