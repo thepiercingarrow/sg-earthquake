@@ -47,7 +47,7 @@ function onconnect(socket) {
     });
 
     socket.on('disconnect', function(p){
-	io.emit('msg', {msg: 'player: \'' + players.get(socket.id).name + '\' has disconnected', type: "sys"});
+	io.emit('msg', {msg: '\'' + players.get(socket.id).name + '\' has disconnected', type: "sys"});
 	grapplers.delete(socket.id);
 	players.delete(socket.id);
     })
