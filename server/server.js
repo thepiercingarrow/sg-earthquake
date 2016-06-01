@@ -16,19 +16,20 @@ var arena = new Map();
 io.on('connection', onconnect);
 
 function onconnect(socket) {
-    
+    connections.prototype.set(socket.id, {});
+
+    socket.on('spawn', function(){
+	if (name == 'Unnamed grappler') {
+            io.emit('message', {msg: socket.username + ' has changed their name to ' + name + '.', type: 'alert'});
+            username = name;
+        }
+        socket.join('arena');
+    });
+
     socket.on('player-update', function(p){
 	name = p.name;
 	players[p.name] = p;
 	io.to('arena').emit('players', players);
-    });
-
-    socket.on('spawn', function(name){
-	if (name != socket.username) {
-            io.emit('message', {msg: socket.username + ' has changed their name to ' + name + '.', type: 'alert'});
-            socket.username = name;
-        }
-        socket.join('arena');
     });
 
     socket.on('chat', function(msg){
