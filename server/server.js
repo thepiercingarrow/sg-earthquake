@@ -40,6 +40,6 @@ function onconnect(socket) {
     socket.on('disconnect', function(p){
 	grapplers.delete(socket.id);
 	players.delete(socket.id);
-	io.emit('message', {msg: 'player: \'' + players.get(socket.id).name} + '\' has disconnected', type: "sys"});
+	io.emit('message', {msg: 'player: \'' + players.get(socket.id).name + '\' has disconnected', type: "sys"});
     })
 }
