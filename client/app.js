@@ -59,6 +59,11 @@ namebar.addEventListener('change', function(e){
     socket.emit('name-change', input.name);
 });
 
+namebar.addEventListener('keypress', (e) => {
+    if (e.keyCode = KEY_ENTER)
+	play.click();
+});
+
 play.addEventListener('click', start);
 
 function appendmessage(msg, type, player) {
