@@ -11,7 +11,7 @@ app.use(express.static('client'));
 
 var players = new Map();
 var grapplers = new Map();
-var arena = new Map();
+var arena = new Set();
 
 function Player(name) {
     this.name = name;
