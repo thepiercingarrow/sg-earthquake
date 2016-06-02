@@ -59,6 +59,11 @@ namebar.addEventListener('change', function(e){
     socket.emit('name-change', input.name);
 });
 
+namebar.addEventListener('keypress', (e) => {
+    if (e.keyCode = KEY_ENTER)
+	play.click();
+});
+
 play.addEventListener('click', start);
 
 function appendmessage(msg, type, player) {
@@ -89,7 +94,7 @@ function start(e) {
 
 var input = {
     old: {},
-    new: {
+    update: {
         mouseX: 0,
         mouseY: 0,
         mouseDown: false,
@@ -99,16 +104,16 @@ var input = {
 };
 
 canvas.addEventListener('mousemove', function(e){
-    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY;
+    input.update.mouseX = e.clientX, input.update.mouseY = e.clientY;
 });
 
 canvas.addEventListener('mousedown', function(e){
-    input.new.mouseDown = true;
-    input.new.mouseX = e.clientX, input.new.mouseY = e.clientY; //temp 4 mobile dbg
+    input.update.mouseDown = true;
+    input.update.mouseX = e.clientX, input.update.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
 canvas.addEventListener('mouseup', function(e){
-    input.new.mouseDown = false;
+    input.update.mouseDown = false;
 });
 
 canvas.addEventListener('keydown', function(e){
@@ -129,9 +134,9 @@ function canvas_input(key, state) {
 	    if (!state)
 		chatbar.focus(); break;
         case KEY_GRAPPLE:
-	    input.new.grapple = state; break;
+	    input.update.grapple = state; break;
         case KEY_SHIELD:
-	    input.new.shield = state; break;
+	    input.update.shield = state; break;
     }
 }
 
@@ -156,8 +161,8 @@ function main() {
 }
 
 function update() {
-    if (objcmp(input.old, input.new) == false) {
-        socket.emit('player-update', {name: name, x: input.new.mouseX, y: input.new.mouseY});
+    if (objcmp(input.old, input.update) == false || false) {
+        socket.emit('player-update', {name: name, x: input.update.mouseX, y: input.update.mouseY});
     }
 }
 
@@ -167,7 +172,8 @@ function draw() {
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
 	g.font = "20px Monaco";
-	g.fillText(players[p].name, x, y - 20);
+	g.textAlign = "center";
+	g.fillText(players[p].name, x, y - 35);
 	g.drawCircle(x, y, 20);
     }
     g.stroke();
