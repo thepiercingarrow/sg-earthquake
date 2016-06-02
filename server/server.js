@@ -26,12 +26,12 @@ function onconnect(socket) {
 
     socket.on('spawn', function(){
 	grapplers.set(socket.id, new Player(players.get(socket.id).name));
-        socket.join('arena');
+	socket.join('arena');
     });
 
-    socket.on('player-update', function(p){
-	name = p.name;
-	players[p.name] = p;
+    socket.on('input', (input) => {
+    	if (grapplers.has(socket.id))
+	    grapplers.get(socket.id).input.new = input;
     });
 
     socket.on('name-change', (name) => {
@@ -53,11 +53,11 @@ function onconnect(socket) {
 }
 
 function physics() {
-    //todo
+    //TODO: parse player input
 }
 
 function send_arena() {
-    io.to('arena').emit('players', players);
+    io.to('arena').emit('players', arena);
 }
 
 setInterval(physics, 15);
