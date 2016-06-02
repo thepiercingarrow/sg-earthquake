@@ -161,7 +161,7 @@ function main() {
 }
 
 function update() {
-    if (objcmp(input.old, input.update) == false) {
+    if (objcmp(input.old, input.update) == false || false) {
         socket.emit('player-update', {name: name, x: input.update.mouseX, y: input.update.mouseY});
     }
 }
@@ -173,7 +173,7 @@ function draw() {
         var x = players[p].x, y = players[p].y;
 	g.font = "20px Monaco";
 	g.textAlign = "center";
-	g.fillText(players[p].name, x, y - 20);
+	g.fillText(players[p].name, x, y - 35);
 	g.drawCircle(x, y, 20);
     }
     g.stroke();
