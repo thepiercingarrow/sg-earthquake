@@ -167,6 +167,7 @@ function draw() {
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
 	g.font = "20px Monaco";
+	g.textAlign = "center";
 	g.fillText(players[p].name, x, y - 20);
 	g.drawCircle(x, y, 20);
     }
