@@ -60,7 +60,7 @@ namebar.addEventListener('change', function(e){
 });
 
 namebar.addEventListener('keypress', (e) => {
-    if (e.keyCode = KEY_ENTER)
+    if (e.keyCode == KEY_ENTER)
 	play.click();
 });
 
