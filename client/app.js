@@ -14,11 +14,11 @@ var chatbar = document.getElementById('chatbar');
 
 var socket = io();
 
-socket.on('players', function(p){
+socket.on('players', (p) => {
     players = p;
 });
 
-socket.on('msg', function(m){
+socket.on('msg', (m) => {
     appendmessage(m.msg, m.type, m.player);
 });
 
@@ -103,36 +103,38 @@ var input = {
     }
 };
 
-canvas.addEventListener('mousemove', function(e){
+canvas.addEventListener('mousemove', (e) => {
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY;
 });
 
-canvas.addEventListener('mousedown', function(e){
+canvas.addEventListener('mousedown', (e) => {
     input.update.mouseDown = true;
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
-canvas.addEventListener('mouseup', function(e){
+canvas.addEventListener('mouseup', (e) => {
     input.update.mouseDown = false;
 });
 
-canvas.addEventListener('keydown', function(e){
+canvas.addEventListener('keydown', (e) => {
     canvas_input(e.keyCode, true);
 });
 
-canvas.addEventListener('keyup', function(e){
+canvas.addEventListener('keypress', (e) => {
+    if (e.keyCode == KEY_CHAT_FOCUS)
+	chatbar.focus();
+});
+
+canvas.addEventListener('keyup', (e) => {
     canvas_input(e.keyCode, false);
 });
 
-chatbar.addEventListener('keydown', function(e){
+chatbar.addEventListener('keydown', (e) => {
     chat_input(e.keyCode);
 });
 
 function canvas_input(key, state) {
     switch (key) {
-        case KEY_CHAT_FOCUS:
-	    if (!state)
-		chatbar.focus(); break;
         case KEY_GRAPPLE:
 	    input.update.grapple = state; break;
         case KEY_SHIELD:
