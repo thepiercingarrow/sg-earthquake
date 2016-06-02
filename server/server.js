@@ -29,9 +29,9 @@ function onconnect(socket) {
 	socket.join('arena');
     });
 
-    socket.on('input', (input) => {
+    socket.on('new-input', (input) => {
     	if (grapplers.has(socket.id))
-	    grapplers.get(socket.id).input.new = input;
+	    grapplers.get(socket.id).input.update = input;
     });
 
     socket.on('name-change', (name) => {
