@@ -44,7 +44,7 @@ function onconnect(socket) {
 	    grapplers.get(socket.id).name = name;
     });
 
-    socket.on('chat', function (msg) => {
+    socket.on('chat', (msg) => {
 	io.emit('msg', {msg: msg, type: 'p', player: players.get(socket.id).name});
     });
 
