@@ -12,8 +12,8 @@ app.use(express.static('client'));
 var players = new Map();
 var grapplers = new Map();
 var arena = {
-    bullets: new Set();
-    blocks: new Set();
+    bullets: new Set(),
+    blocks: new Set()
 };
 
 function Player(name) {
