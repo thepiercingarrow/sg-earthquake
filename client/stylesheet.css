@@ -1,6 +1,6 @@
 body {
     position: fixed;
-    background-image: url("/img/image.jpeg");
+    background-image: url("/data/bg/image.jpeg");
 }
 
 #gamewrapper {
