@@ -64,7 +64,7 @@ function physics() {
 }
 
 function send_arena() {
-    io.to('arena').emit('arena-update', {g: grapplers, a: arena);
+    io.to('arena').emit('arena-update', {g: grapplers, a: arena});
 }
 
 setInterval(physics, 15);
