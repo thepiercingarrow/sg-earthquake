@@ -44,23 +44,26 @@ function onconnect(socket) {
 	    grapplers.get(socket.id).name = name;
     });
 
-    socket.on('chat', function(msg){
+    socket.on('chat', function (msg) => {
 	io.emit('msg', {msg: msg, type: 'p', player: players.get(socket.id).name});
     });
 
-    socket.on('disconnect', function(p){
+    socket.on('disconnect', () => {
 	io.emit('msg', {msg: '\'' + players.get(socket.id).name + '\' has disconnected', type: "sys"});
 	grapplers.delete(socket.id);
 	players.delete(socket.id);
-    })
+    });
 }
 
 function physics() {
-    //TODO: parse player input
+    grapplers.forEach((value, key) => {
+	grapplers.get(value).X = key.input.update.mouseX;
+	grapplers.get(value).Y = key.input.update.mouseY;
+    });
 }
 
 function send_arena() {
-    io.to('arena').emit('players', arena);
+    io.to('arena').emit('arena-update', {g: grapplers, a: arena);
 }
 
 setInterval(physics, 15);
