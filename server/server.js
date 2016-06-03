@@ -24,11 +24,12 @@ io.on('connection', onconnect);
 
 function onconnect(socket) {
     players.set(socket.id, {});
+    var p = players.get(socket.id);
     io.emit('msg', {type: 'sys', msg: 'An unnamed grappler has connected.'});
-    players.get(socket.id).name = 'Unnamed grappler';
+    p.name = 'Unnamed grappler';
 
     socket.on('spawn', function(){
-	grapplers.set(socket.id, new Player(players.get(socket.id).name));
+	grapplers.set(socket.id, new Player(p.name));
 	socket.join('arena');
     });
 
@@ -38,18 +39,18 @@ function onconnect(socket) {
     });
 
     socket.on('name-change', (name) => {
-	io.emit('msg', {type: 'sys', msg: '\'' + players.get(socket.id).name + '\' has changed their name to \'' + name + '\'.'});
-	players.get(socket.id).name = name;
+	io.emit('msg', {type: 'sys', msg: '\'' + p.name + '\' has changed their name to \'' + name + '\'.'});
+	p.name = name;
 	if (grapplers.get(socket.id))
 	    grapplers.get(socket.id).name = name;
     });
 
     socket.on('chat', (msg) => {
-	io.emit('msg', {msg: msg, type: 'p', player: players.get(socket.id).name});
+	io.emit('msg', {msg: msg, type: 'p', player: p.name});
     });
 
     socket.on('disconnect', () => {
-	io.emit('msg', {msg: '\'' + players.get(socket.id).name + '\' has disconnected', type: "sys"});
+	io.emit('msg', {msg: '\'' + p.name + '\' has disconnected', type: "sys"});
 	grapplers.delete(socket.id);
 	players.delete(socket.id);
     });
