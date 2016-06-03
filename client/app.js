@@ -12,16 +12,6 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-var socket = io();
-
-socket.on('players', function(p){
-    players = p;
-});
-
-socket.on('msg', function(m){
-    appendmessage(m.msg, m.type, m.player);
-});
-
 var TAU = 2 * Math.PI;
 
 function dist(x1, y1, x2, y2) {
@@ -82,6 +72,16 @@ function appendmessage(msg, type, player) {
 function dbg(msg) {
     appendmessage(msg, 'dbg');
 }
+
+var socket = io();
+
+socket.on('players', function(p){
+    players = p;
+});
+
+socket.on('msg', function(m){
+    appendmessage(m.msg, m.type, m.player);
+});
 
 var players = {};
 
