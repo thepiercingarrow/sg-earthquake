@@ -1,3 +1,5 @@
+import * as math from "modules/math.js";
+
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
 var KEY_SHIELD = 32;
@@ -12,28 +14,10 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-var TAU = 2 * Math.PI;
-
-function dist(x1, y1, x2, y2) {
-    var dx = x1 - x2, dy = y1 - y2;
-    return Math.sqrt(dx*dx + dy*dy);
-}
-
 g.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
 };
-
-function objcmp(o1, o2) {
-    var eq = true;
-    for (var p in o2) {
-        if (o1[p] != o2[p]) {
-            o1[p] = o2[p];
-            eq = false;
-        }
-    }
-    return eq;
-}
 
 var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
