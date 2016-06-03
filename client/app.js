@@ -14,11 +14,11 @@ var chatbar = document.getElementById('chatbar');
 
 var socket = io();
 
-socket.on('players', (p) => {
+socket.on('players', function(p){
     players = p;
 });
 
-socket.on('msg', (m) => {
+socket.on('msg', function(m){
     appendmessage(m.msg, m.type, m.player);
 });
 
@@ -59,7 +59,7 @@ namebar.addEventListener('change', function(e){
     socket.emit('name-change', input.name);
 });
 
-namebar.addEventListener('keypress', (e) => {
+namebar.addEventListener('keypress', function(e){
     if (e.keyCode == KEY_ENTER)
 	play.click();
 });
@@ -103,33 +103,33 @@ var input = {
     }
 };
 
-canvas.addEventListener('mousemove', (e) => {
+canvas.addEventListener('mousemove', function(e){
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY;
 });
 
-canvas.addEventListener('mousedown', (e) => {
+canvas.addEventListener('mousedown', function(e){
     input.update.mouseDown = true;
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
-canvas.addEventListener('mouseup', (e) => {
+canvas.addEventListener('mouseup', function(e){
     input.update.mouseDown = false;
 });
 
-canvas.addEventListener('keydown', (e) => {
+canvas.addEventListener('keydown', function(e){
     canvas_input(e.keyCode, true);
 });
 
-canvas.addEventListener('keypress', (e) => {
+canvas.addEventListener('keypress', function(e){
     if (e.keyCode == KEY_CHAT_FOCUS)
 	chatbar.focus();
 });
 
-canvas.addEventListener('keyup', (e) => {
+canvas.addEventListener('keyup', function(e){
     canvas_input(e.keyCode, false);
 });
 
-chatbar.addEventListener('keydown', (e) => {
+chatbar.addEventListener('keydown', function(e){
     chat_input(e.keyCode);
 });
 
