@@ -16,36 +16,32 @@ var arena = {
     blocks: new Set()
 };
 
-function Player(name) {
-    this.name = name;
-}
-
 io.on('connection', onconnect);
 
 function onconnect(socket) {
     players.set(socket.id, {});
-    var p = players.get(socket.id);
+    var player = players.get(socket.id);
     io.emit('msg', {type: 'sys', msg: 'An unnamed grappler has connected.'});
     p.name = 'Unnamed grappler';
 
-    socket.on('spawn', function(){
-	grapplers.set(socket.id, new Player(p.name));
-	socket.join('arena');
+    socket.on('spawn', () => {
+	grapplers.set(socket.id, {name: player.name});
+        socket.join('arena');
     });
 
-    socket.on('new-input', (input) => {
+    socket.on('new-input', input => {
     	if (grapplers.has(socket.id))
 	    grapplers.get(socket.id).input.update = input;
     });
 
-    socket.on('name-change', (name) => {
+    socket.on('name-change', name => {
 	io.emit('msg', {type: 'sys', msg: '\'' + p.name + '\' has changed their name to \'' + name + '\'.'});
 	p.name = name;
 	if (grapplers.get(socket.id))
 	    grapplers.get(socket.id).name = name;
     });
 
-    socket.on('chat', (msg) => {
+    socket.on('chat', msg => {
 	io.emit('msg', {msg: msg, type: 'p', player: p.name});
     });
 
@@ -61,6 +57,9 @@ function physics() {
 	grapplers.get(value).X = key.input.update.mouseX;
 	grapplers.get(value).Y = key.input.update.mouseY;
     });
+//     var grappler = grapplers.get(value);
+//     grappler.X += grappler.velX;
+//     grappler.Y += grappler.velY;
 }
 
 function send_arena() {

@@ -15,7 +15,7 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-var arena = {};
+var socket = io();
 
 var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
@@ -55,41 +55,12 @@ function dbg(msg) {
     appendmessage(msg, 'dbg');
 }
 
-var socket = io();
-
-socket.on('arena-update', function(a){
-    arena = a;
-});
-
-socket.on('msg', function(m){
-    appendmessage(m.msg, m.type, m.player);
-});
-
-function start(e) {
-    socket.emit('spawn', name);
-    menu.style.display = 'none';
-    canvas.focus();
-    requestAnimationFrame(main);
-}
-
-var input = {
-    old: {},
-    update: {
-        mouseX: 0,
-        mouseY: 0,
-        mouseDown: false,
-        grapple: false,
-        shield: false
-    }
-};
-
 canvas.addEventListener('mousemove', function(e){
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY;
 });
 
 canvas.addEventListener('mousedown', function(e){
     input.update.mouseDown = true;
-    input.update.mouseX = e.clientX, input.update.mouseY = e.clientY; //temp 4 mobile dbg
 });
 
 canvas.addEventListener('mouseup', function(e){
@@ -136,6 +107,35 @@ function chat_input(key) {
     }
 }
 
+socket.on('arena-update', function(a){
+    arena = a;
+});
+
+socket.on('msg', function(m){
+    appendmessage(m.msg, m.type, m.player);
+});
+
+
+var arena = {};
+
+function start(e) {
+    socket.emit('spawn', name);
+    menu.style.display = 'none';
+    canvas.focus();
+    requestAnimationFrame(main);
+}
+
+var input = {
+    old: {},
+    update: {
+        mouseX: 0,
+        mouseY: 0,
+        mouseDown: false,
+        grapple: false,
+        shield: false
+    }
+};
+
 function main() {
     update();
     draw();
@@ -155,9 +155,3 @@ function draw() {
 	
     }
 }
-
-
-	g.font = "20px Monaco";
-	g.textAlign = "center";
-	g.fillText(players[p].name, x, y - 35);
-	g.drawCircle(x, y, 20);
