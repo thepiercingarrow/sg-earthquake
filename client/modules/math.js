@@ -17,5 +17,3 @@ math.objcmp = function(o1, o2) {
   }
   return eq;
 }
-
-    require('socket.io-client');
