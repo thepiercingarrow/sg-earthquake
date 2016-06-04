@@ -1,3 +1,5 @@
+var draw;
+
 draw.circle = function(g, x, y, r){
     g.beginPath();
     this.arc(x, y, r, 0, 2 * Math.PI);

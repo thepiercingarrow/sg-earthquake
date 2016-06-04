@@ -1,3 +1,5 @@
+var math;
+
 math.TAU = 2 * Math.PI;
 
 math.dist = function(x1, y1, x2, y2) {
