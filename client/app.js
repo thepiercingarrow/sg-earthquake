@@ -150,8 +150,11 @@ function update() {
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    for (var grappler in arena.grapplers) {
-	var x = players[p].x, y = players[p].y;
-	
+    for (var grappler in arena.g) {
+	draw.circle(g, grappler.X, grappler.Y, 10);
+	draw.label(grappler.X, grappler.Y, grappler.name);
     }
+    arena.a.bullets.forEach((bullet) => {
+	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
+    });
 }
