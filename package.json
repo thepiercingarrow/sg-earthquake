@@ -11,8 +11,8 @@
     "server"
   ],
   "dependencies": {
-    "express": "^4.10.2",
-    "socket.io": "^1.4.5",
+    "express": "^4.13.4",
+    "socket.io": "^1.4.6",
     "socket.io-client": "^1.4.6"
   },
   "scripts": {
