@@ -14,6 +14,8 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
+var arena = {};
+
 g.drawCircle = function(x,y,r){
     this.moveTo(x+r,y);
     this.arc(x,y,r,0,TAU);
@@ -59,15 +61,13 @@ function dbg(msg) {
 
 var socket = io();
 
-socket.on('players', function(p){
-    players = p;
+socket.on('arena-update', function(a){
+    arena = a;
 });
 
 socket.on('msg', function(m){
     appendmessage(m.msg, m.type, m.player);
 });
-
-var players = {};
 
 function start(e) {
     socket.emit('spawn', name);
