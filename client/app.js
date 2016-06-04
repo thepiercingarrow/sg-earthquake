@@ -12,7 +12,8 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-var socket = require('socket.io-client')();
+var io = require('socket.io-client');
+var socket = io();
 
 var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
