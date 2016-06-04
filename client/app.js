@@ -1,4 +1,5 @@
 import * as math from "modules/math.js";
+import * as draw from "modules/draw.js";
 
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
@@ -15,11 +16,6 @@ var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
 var arena = {};
-
-g.drawCircle = function(x,y,r){
-    this.moveTo(x+r,y);
-    this.arc(x,y,r,0,TAU);
-};
 
 var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
@@ -147,14 +143,13 @@ function main() {
 }
 
 function update() {
-    if (objcmp(input.old, input.update) == false || false) {
-        socket.emit('player-update', {name: name, x: input.update.mouseX, y: input.update.mouseY});
+    if (math.objcmp(input.old, input.update) == false || false) {
+        socket.emit('player-update', {name: name, x: input.update});
     }
 }
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    g.beginPath();
     for (var p in players) {
         var x = players[p].x, y = players[p].y;
 	g.font = "20px Monaco";
@@ -162,6 +157,4 @@ function draw() {
 	g.fillText(players[p].name, x, y - 35);
 	g.drawCircle(x, y, 20);
     }
-    g.stroke();
-    g.closePath();
 }
