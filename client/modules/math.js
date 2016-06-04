@@ -1,4 +1,4 @@
-var math;
+var math = {};
 
 math.TAU = 2 * Math.PI;
 

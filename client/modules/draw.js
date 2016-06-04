@@ -1,4 +1,4 @@
-var draw;
+var draw = {};
 
 draw.circle = function(g, x, y, r){
     g.beginPath();

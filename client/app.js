@@ -1,6 +1,3 @@
-import * as math from "modules/math.js";
-import * as draw from "modules/draw.js";
-
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
 var KEY_SHIELD = 32;
