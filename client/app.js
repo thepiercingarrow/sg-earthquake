@@ -15,7 +15,7 @@ var play = document.getElementById('play');
 var messages = document.getElementById('messages');
 var chatbar = document.getElementById('chatbar');
 
-var socket = io();
+var socket = require('socket.io-client')();
 
 var W = window.innerWidth, H = window.innerHeight;
 canvas.width = W; canvas.height = H;
@@ -150,7 +150,7 @@ function update() {
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    for (var p in players) {
+    for (var grappler in arena.grapplers) {
 	var x = players[p].x, y = players[p].y;
 	
     }
