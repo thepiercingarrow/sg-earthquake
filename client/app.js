@@ -1,3 +1,5 @@
+var arena = {};
+
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
 var KEY_CHAT_FOCUS_2 = 116;
@@ -120,7 +122,6 @@ function chat_input(key) {
     }
 }
 
- var arena = {};
 
 var tick = 0;
 var frame;

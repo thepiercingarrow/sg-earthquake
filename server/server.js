@@ -12,8 +12,6 @@ app.use(express.static('client'));
 var players = {};
 var grapplers = {};
 var arena = {
-    //    bullets: new Set(),
-    //    blocks: new Set(),
     grapplers: {}
 };
 var tick = 0;
@@ -30,7 +28,7 @@ function onconnect(socket) {
 	grapplers[socket.id] = {name: player.name, input: {}};
         arena.grapplers[socket.id] = {name: player.name, x: 50, y: 50};
 	socket.join('arena');
-	socket.emit('spawned');
+	socket.emit('spawned', arena);
     });
 
     socket.on('new-input', input => {
@@ -63,11 +61,8 @@ function physics() {
 	g = arena.grapplers[key];
 	g.x = grapplers[key].input.mouseX;
 	g.y = grapplers[key].input.mouseY;
-
     };
-//     var grappler = grapplers.get(value);
-//     grappler.X += grappler.velX;
-//     grappler.Y += grappler.velY;
+
     ++tick;
 }
 
