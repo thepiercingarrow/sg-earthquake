@@ -125,10 +125,13 @@ var tick = 0;
 
 function start(e) {
     socket.emit('spawn', name);
+}
+
+socket.on('spawned', () => {
     menu.style.display = 'none';
     canvas.focus();
     requestAnimationFrame(main);
-}
+});
 
 var input = {
     old: {},
@@ -153,7 +156,7 @@ socket.on('arena-update', function(a){
 
 function update() {
     if (math.objcmp(input.old, input.update) == false || false) {
-        socket.emit('player-update', {name: name, x: input.update});
+        socket.emit('new-input', {name: name, x: input.update});
     }
 }
 

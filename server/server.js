@@ -30,6 +30,7 @@ function onconnect(socket) {
 	grapplers.set(socket.id, {name: player.name, input: {}});
         arena.grapplers.set(socket.id, {name: player.name, x: 50, y: 50});
 	socket.join('arena');
+	socket.emit('spawned');
     });
 
     socket.on('new-input', input => {
@@ -57,17 +58,20 @@ function onconnect(socket) {
 
 function physics() {
     grapplers.forEach((grappler, key) => {
-	arena.grapplers.get(key).X = grappler.input.mouseX;
-	arena.grapplers.get(key).Y = grappler.input.mouseY;
-	++tick;
+	g = arena.grapplers.get(key);
+	g.x = grappler.input.mouseX;
+ 	g.y = grappler.input.mouseY;
+	console.log(g);
     });
 //     var grappler = grapplers.get(value);
 //     grappler.X += grappler.velX;
 //     grappler.Y += grappler.velY;
+    ++tick;
 }
 
 function send_arena() {
     io.to('arena').emit('arena-update', arena);
+    //    console.log(arena);
 }
 
 setInterval(physics, 15);
