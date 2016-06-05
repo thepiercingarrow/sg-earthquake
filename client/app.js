@@ -175,7 +175,4 @@ function draw() {
 	console.log('drew circle');
 	DRAW.label(g, grappler.x, grappler.y, grappler.name);
     };
-//     arena.a.bullets.forEach((bullet) => {
-// 	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
-//    });
 }
