@@ -1,5 +1,6 @@
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
+var KEY_CHAT_FOCUS_2 = 116;
 var KEY_SHIELD = 32;
 var KEY_ENTER = 13;
 var KEY_ESC = 27;
@@ -52,6 +53,10 @@ function dbg(msg) {
     appendmessage(msg, 'dbg');
 }
 
+socket.on('msg', function(m){
+    appendmessage(m.msg, m.type, m.player);
+});
+
 canvas.addEventListener('mousemove', function(e){
     input.update.mouseX = e.clientX, input.update.mouseY = e.clientY;
 });
@@ -69,15 +74,26 @@ canvas.addEventListener('keydown', function(e){
 });
 
 canvas.addEventListener('keypress', function(e){
-    if (e.keyCode == KEY_CHAT_FOCUS)
-	chatbar.focus();
 });
 
 canvas.addEventListener('keyup', function(e){
-    canvas_input(e.keyCode, false);
+    if (e.keyCode == KEY_CHAT_FOCUS)
+	chatbar.focus();
+    else if (e.keyCode == KEY_ESC) {
+	menu.style.display = "initial";
+	namebar.focus();
+    }
+    else
+	canvas_input(e.keyCode, false);
 });
 
 chatbar.addEventListener('keydown', function(e){
+    if (e.keyCode = KEY_ENTER)
+	chatbar.focus();
+});
+
+
+chatbar.addEventListener('keyup', function(e){
     chat_input(e.keyCode);
 });
 
@@ -104,16 +120,8 @@ function chat_input(key) {
     }
 }
 
-socket.on('arena-update', function(a){
-    arena = a;
-});
-
-socket.on('msg', function(m){
-    appendmessage(m.msg, m.type, m.player);
-});
-
-
 var arena = {};
+var tick = 0;
 
 function start(e) {
     socket.emit('spawn', name);
@@ -139,6 +147,10 @@ function main() {
     requestAnimationFrame(main);
 }
 
+socket.on('arena-update', function(a){
+    arena = a;
+});
+
 function update() {
     if (math.objcmp(input.old, input.update) == false || false) {
         socket.emit('player-update', {name: name, x: input.update});
@@ -147,11 +159,11 @@ function update() {
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    for (var grappler in arena.g) {
+    for (var grappler in arena.grapplers) {
 	draw.circle(g, grappler.X, grappler.Y, 10);
 	draw.label(grappler.X, grappler.Y, grappler.name);
     }
-    arena.a.bullets.forEach((bullet) => {
-	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
-    });
+//     arena.a.bullets.forEach((bullet) => {
+// 	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
+//    });
 }
