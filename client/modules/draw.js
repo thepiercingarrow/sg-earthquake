@@ -3,9 +3,9 @@ var DRAW = {};
 DRAW.circle = function(g, x, y, r){
     g.beginPath();
     g.arc(x, y, r, 0, 2 * Math.PI);
-    g.closePath();
     g.stroke();
     g.fill();
+    g.closePath();
 };
 
 DRAW.label = function(g, x, y, l){

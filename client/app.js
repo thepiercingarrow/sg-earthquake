@@ -122,7 +122,6 @@ function chat_input(key) {
     }
 }
 
-
 var tick = 0;
 var frame;
 
@@ -169,10 +168,8 @@ function update() {
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    console.log(arena.grapplers);
     for (var grappler in arena.grapplers) {
-	DRAW.circle(g, grappler.x, grappler.y, 10);
-	console.log('drew circle');
-	DRAW.label(g, grappler.x, grappler.y, grappler.name);
+	DRAW.circle(g, arena.grapplers[grappler].x, arena.grapplers[grappler].y, 20);
+	DRAW.label(g, arena.grapplers[grappler].x, arena.grapplers[grappler].y, arena.grapplers[grappler].name);
     };
 }
