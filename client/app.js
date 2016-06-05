@@ -152,7 +152,6 @@ socket.on('spawned', function(a){
 function main() {
     update();
     draw();
-    console.log('ja');
     frame = requestAnimationFrame(main);
 }
 
@@ -170,7 +169,7 @@ function update() {
 function draw() {
     g.clearRect(0, 0, W, H);
     console.log(arena.grapplers);
-    arena.grapplers.forEach(function(grappler, key){
+    for (var grappler in arena.grapplers) {
 	draw.circle(g, grappler.x, grappler.y, 10);
 	console.log('drew circle');
 	draw.label(g, grappler.x, grappler.y, grappler.name);

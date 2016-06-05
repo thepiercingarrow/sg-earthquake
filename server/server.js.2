@@ -9,41 +9,41 @@ http.listen(port);
 console.log('listening on port %d', port);
 app.use(express.static('client'));
 
-var players = {};
-var grapplers = {};
+var players = new Map();
+var grapplers = new Map();
 var arena = {
-    //    bullets: new Set(),
-    //    blocks: new Set(),
-    grapplers: {}
+    bullets: new Set(),
+    blocks: new Set(),
+    grapplers: new Map()
 };
 var tick = 0;
 
 io.on('connection', onconnect);
 
 function onconnect(socket) {
-    players.socket.id = {};
-    var player = players.socket.id;
+    players.set(socket.id, {});
+    var player = players.get(socket.id);
     io.emit('msg', {type: 'sys', msg: 'An unnamed grappler has connected.'});
     player.name = 'Unnamed grappler';
 
     socket.on('spawn', () => {
-	grapplers.socket.id = {name: player.name, input: {}};
-        arena.grapplers.socket.id = {name: player.name, x: 50, y: 50};
+	grapplers.set(socket.id, {name: player.name, input: {}});
+        arena.grapplers.set(socket.id, {name: player.name, x: 50, y: 50});
 	socket.join('arena');
 	socket.emit('spawned');
     });
 
     socket.on('new-input', input => {
-    	if (grapplers.socket.id != undefined)
-	    grapplers.socket.id.input = input;
+    	if (grapplers.has(socket.id))
+	    grapplers.get(socket.id).input = input;
     });
 
     socket.on('name-change', name => {
 	io.emit('msg', {type: 'sys', msg: '\'' + player.name + '\' has changed their name to \'' + name + '\'.'});
 	player.name = name;
-	if (grapplers.socket.id) {
-	    grapplers.socket.id.name = name;
-	    arena.grapplers.socket.id.name = name;
+	if (grapplers.get(socket.id)) {
+	    grapplers.get(socket.id).name = name;
+	    arena.grapplers.get(socket.id).name = name;
 	}
     });
 
@@ -53,18 +53,18 @@ function onconnect(socket) {
 
     socket.on('disconnect', () => {
 	io.emit('msg', {msg: '\'' + player.name + '\' has disconnected', type: "sys"});
-	delete grapplers.socket.id;
-	delete grapplers.socket.id;
+	grapplers.delete(socket.id);
+	players.delete(socket.id);
     });
 }
 
 function physics() {
-    for (var key in grapplers) {
-	g = arena.grapplers[key];
-	g.x = grapplers[key].input.mouseX;
-	g.y = grapplers[key].input.mouseY;
+    grapplers.forEach((grappler, key) => {
+	g = arena.grapplers.get(key);
+	g.x = grappler.input.mouseX;
+	g.y = grappler.input.mouseY;
 	console.log(g);
-    };
+    });
 //     var grappler = grapplers.get(value);
 //     grappler.X += grappler.velX;
 //     grappler.Y += grappler.velY;
