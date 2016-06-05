@@ -120,7 +120,7 @@ function chat_input(key) {
     }
 }
 
-// var arena = {};
+ var arena = {};
 
 var tick = 0;
 var frame;
@@ -173,7 +173,7 @@ function draw() {
 	draw.circle(g, grappler.x, grappler.y, 10);
 	console.log('drew circle');
 	draw.label(g, grappler.x, grappler.y, grappler.name);
-    });
+    };
 //     arena.a.bullets.forEach((bullet) => {
 // 	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
 //    });

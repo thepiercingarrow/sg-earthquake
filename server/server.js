@@ -63,7 +63,7 @@ function physics() {
 	g = arena.grapplers[key];
 	g.x = grapplers[key].input.mouseX;
 	g.y = grapplers[key].input.mouseY;
-	console.log(g);
+
     };
 //     var grappler = grapplers.get(value);
 //     grappler.X += grappler.velX;
@@ -73,7 +73,6 @@ function physics() {
 
 function send_arena() {
     io.to('arena').emit('arena-update', arena);
-    console.log(arena);
 }
 
 setInterval(physics, 15);
