@@ -9,7 +9,13 @@ DRAW.circle = function(g, x, y, r){
 };
 
 DRAW.label = function(g, x, y, l){
-    g.font = "20px Monaco";
+    g.font = "30px Monaco";
     g.textAlign = "center";
-    g.fillText(l, x, y - 35);
+    g.fillText(l, x, y - 60);
+};
+
+var skin = document.getElementById('ice_god');
+
+DRAW.grappler = function(g, x, y){
+    g.drawImage(skin, x - 50, y - 50, 100, 100);
 }

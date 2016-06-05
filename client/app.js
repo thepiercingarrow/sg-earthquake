@@ -1,5 +1,7 @@
 var arena = {};
 
+var CHAT = true;
+
 var KEY_GRAPPLE = 82;
 var KEY_CHAT_FOCUS = 84;
 var KEY_CHAT_FOCUS_2 = 116;
@@ -169,7 +171,7 @@ function update() {
 function draw() {
     g.clearRect(0, 0, W, H);
     for (var grappler in arena.grapplers) {
-	DRAW.circle(g, arena.grapplers[grappler].x, arena.grapplers[grappler].y, 20);
+	DRAW.grappler(g, arena.grapplers[grappler].x, arena.grapplers[grappler].y);
 	DRAW.label(g, arena.grapplers[grappler].x, arena.grapplers[grappler].y, arena.grapplers[grappler].name);
     };
 }
