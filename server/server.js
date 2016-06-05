@@ -35,14 +35,16 @@ function onconnect(socket) {
 
     socket.on('new-input', input => {
     	if (grapplers.has(socket.id))
-	    grapplers.get(socket.id).input.update = input;
+	    grapplers.get(socket.id).input = input;
     });
 
     socket.on('name-change', name => {
 	io.emit('msg', {type: 'sys', msg: '\'' + player.name + '\' has changed their name to \'' + name + '\'.'});
 	player.name = name;
-	if (grapplers.get(socket.id))
+	if (grapplers.get(socket.id)) {
 	    grapplers.get(socket.id).name = name;
+	    arena.grapplers.get(socket.id).name = name;
+	}
     });
 
     socket.on('chat', msg => {
@@ -60,7 +62,7 @@ function physics() {
     grapplers.forEach((grappler, key) => {
 	g = arena.grapplers.get(key);
 	g.x = grappler.input.mouseX;
- 	g.y = grappler.input.mouseY;
+	g.y = grappler.input.mouseY;
 	console.log(g);
     });
 //     var grappler = grapplers.get(value);
@@ -71,7 +73,7 @@ function physics() {
 
 function send_arena() {
     io.to('arena').emit('arena-update', arena);
-    //    console.log(arena);
+    console.log(arena);
 }
 
 setInterval(physics, 15);

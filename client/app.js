@@ -120,18 +120,10 @@ function chat_input(key) {
     }
 }
 
-var arena = {};
+// var arena = {};
+
 var tick = 0;
-
-function start(e) {
-    socket.emit('spawn', name);
-}
-
-socket.on('spawned', () => {
-    menu.style.display = 'none';
-    canvas.focus();
-    requestAnimationFrame(main);
-});
+var frame;
 
 var input = {
     old: {},
@@ -144,10 +136,24 @@ var input = {
     }
 };
 
+setInterval(function(){++tick}, 45);
+
+function start(e) {
+    socket.emit('spawn', name);
+}
+
+socket.on('spawned', function(a){
+    arena = a;
+    menu.style.display = 'none';
+    canvas.focus();
+    frame = requestAnimationFrame(main);
+});
+
 function main() {
     update();
     draw();
-    requestAnimationFrame(main);
+    console.log('ja');
+    frame = requestAnimationFrame(main);
 }
 
 socket.on('arena-update', function(a){
@@ -155,17 +161,20 @@ socket.on('arena-update', function(a){
 });
 
 function update() {
-    if (math.objcmp(input.old, input.update) == false || false) {
-        socket.emit('new-input', {name: name, x: input.update});
+    if (math.objcmp(input.old, input.update) == false || tick >= 45) {
+        socket.emit('new-input', input.update);
+	tick = 0;
     }
 }
 
 function draw() {
     g.clearRect(0, 0, W, H);
-    for (var grappler in arena.grapplers) {
-	draw.circle(g, grappler.X, grappler.Y, 10);
-	draw.label(grappler.X, grappler.Y, grappler.name);
-    }
+    console.log(arena.grapplers);
+    arena.grapplers.forEach(function(grappler, key){
+	draw.circle(g, grappler.x, grappler.y, 10);
+	console.log('drew circle');
+	draw.label(g, grappler.x, grappler.y, grappler.name);
+    });
 //     arena.a.bullets.forEach((bullet) => {
 // 	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);
 //    });
