@@ -171,9 +171,9 @@ function draw() {
     g.clearRect(0, 0, W, H);
     console.log(arena.grapplers);
     for (var grappler in arena.grapplers) {
-	draw.circle(g, grappler.x, grappler.y, 10);
+	DRAW.circle(g, grappler.x, grappler.y, 10);
 	console.log('drew circle');
-	draw.label(g, grappler.x, grappler.y, grappler.name);
+	DRAW.label(g, grappler.x, grappler.y, grappler.name);
     };
 //     arena.a.bullets.forEach((bullet) => {
 // 	    draw.bullet(g, bullet.X, bullet.Y, bullet.angle);

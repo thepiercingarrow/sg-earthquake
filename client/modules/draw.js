@@ -1,6 +1,6 @@
-var draw = {};
+var DRAW = {};
 
-draw.circle = function(g, x, y, r){
+DRAW.circle = function(g, x, y, r){
     g.beginPath();
     g.arc(x, y, r, 0, 2 * Math.PI);
     g.closePath();
@@ -8,7 +8,7 @@ draw.circle = function(g, x, y, r){
     g.fill();
 };
 
-draw.label = function(g, x, y, l){
+DRAW.label = function(g, x, y, l){
     g.font = "20px Monaco";
     g.textAlign = "center";
     g.fillText(l, x, y - 35);
