@@ -48,11 +48,11 @@ function onconnect(socket) {
     });
 
     socket.on('chat', msg => {
-	io.emit('msg', {msg: msg, type: 'p', player: player.name});
+	io.emit('msg', {msg: msg, type: 'p', player: exports.player.name});
     });
 
     socket.on('disconnect', () => {
-	io.emit('msg', {msg: '\'' + player.name + '\' has disconnected', type: "sys"});
+	io.emit('msg', {msg: '\'' + exports.player.name + '\' has disconnected', type: "sys"});
 	delete exports.grapplers[socket.id];
 	delete exports.arena.grapplers[socket.id];
     });
